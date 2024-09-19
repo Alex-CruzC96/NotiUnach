@@ -1,0 +1,51 @@
+:root{
+    --bg-post-color:#f0f0f1;
+    --fg-date-color:#0071db;
+    --fg-heart-default-color:#797A7E;
+    --fg-heart-liked-color:#d30d35;
+}
+
+.post{
+    background-color: var(--bg-post-color);
+    border-radius: 10px
+}
+.img-user{
+    width: 45px;
+    cursor: pointer;
+}
+.img{
+    display: inline-flex;
+}
+.date{
+    color: var(--fg-date-color);
+}
+.corazon{
+    color: var(--fg-heart-default-color);
+    transition: height 0.2s;
+}
+.corazon:hover{
+    height: 22px;
+    transition: height 0.2s;
+}
+.corazon.liked{
+    color: var(--fg-heart-liked-color);
+}
+.comentario{
+    color: var(--fg-heart-default-color);   
+    transition: height 0.2s;
+}
+.comentario:hover{
+    height: 22px;
+    transition: height 0.2s;
+}
+.saveIcon{
+    color: var(--fg-heart-default-color);
+    transition: height 0.2s;
+}
+.saveIcon.saved{
+    color: var(--fg-date-color);
+}
+.saveIcon:hover{
+    height: 22px;
+    transition: height 0.2s;
+}

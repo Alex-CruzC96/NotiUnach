@@ -1,0 +1,30 @@
+
+#post{
+  height:100%;
+  margin: 6% 4% !important;
+  margin-bottom: 100px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#footer{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+@media (min-width:835px) {
+    #post{
+      margin: 2% 18% 0 !important;
+      padding-right: 4%;
+      display: inline-flex;
+      width: 82%;
+    }
+    #header{
+      position: fixed;
+      display: inline-flex;
+      width: 18%;
+      padding: 10px;
+      padding-top: 40px;
+    }
+}

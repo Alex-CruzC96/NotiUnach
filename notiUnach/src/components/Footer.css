@@ -1,0 +1,12 @@
+:root{
+    --bg-background-color:#00294f;
+    --fg-fonts-color:#ffffff;
+}
+
+#contenedor{
+    background-color: var(--bg-background-color);
+    color: var(--fg-fonts-color);
+}
+.option{
+    cursor: pointer;
+}
