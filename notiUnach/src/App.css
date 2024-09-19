@@ -15,9 +15,10 @@
 
 @media (min-width:835px) {
     #post{
-      margin: 2% 18% 0 !important;
+      margin: 2% 0 0 18% !important;
       padding-right: 4%;
       display: inline-flex;
+      justify-content: end;
       width: 82%;
     }
     #header{

@@ -23,19 +23,11 @@
     color: var(--fg-heart-default-color);
     transition: height 0.2s;
 }
-.corazon:hover{
-    height: 22px;
-    transition: height 0.2s;
-}
 .corazon.liked{
     color: var(--fg-heart-liked-color);
 }
 .comentario{
     color: var(--fg-heart-default-color);   
-    transition: height 0.2s;
-}
-.comentario:hover{
-    height: 22px;
     transition: height 0.2s;
 }
 .saveIcon{
@@ -45,7 +37,17 @@
 .saveIcon.saved{
     color: var(--fg-date-color);
 }
-.saveIcon:hover{
-    height: 22px;
-    transition: height 0.2s;
+@media (min-width:835px) {
+    .corazon:hover{
+        height: 22px;
+        transition: height 0.2s;
+    }
+    .comentario:hover{
+        height: 22px;
+        transition: height 0.2s;
+    }
+    .saveIcon:hover{
+        height: 22px;
+        transition: height 0.2s;
+    }
 }
