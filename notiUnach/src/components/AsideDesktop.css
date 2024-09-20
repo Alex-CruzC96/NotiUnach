@@ -9,6 +9,26 @@
     cursor: pointer;
     color: black;
 }
+.addPost{
+    background-color: var( --bg-post-color);
+}
+.addPost:hover{
+    background-color: var(--bg-post-hover-color);
+    color: white;
+}
+
+
+@media (max-width:1122px) {
+    p.tag{
+        display: none !important;
+    }
+    .addPost{
+        text-align: center;
+    }
+    .iconos{
+        text-align: center;
+    }
+}
 /* .options:hover .tag{
     font-size: 105%;
     transition: all 0.3s;

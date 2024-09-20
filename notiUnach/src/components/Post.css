@@ -1,5 +1,6 @@
 :root{
     --bg-post-color:#f0f0f1;
+    --bg-post-hover-color:#a2a2a2;
     --fg-date-color:#0071db;
     --fg-heart-default-color:#797A7E;
     --fg-heart-liked-color:#d30d35;
@@ -7,7 +8,7 @@
 
 .post{
     background-color: var(--bg-post-color);
-    border-radius: 10px
+    border-radius: 10px;
 }
 .img-user{
     width: 45px;
