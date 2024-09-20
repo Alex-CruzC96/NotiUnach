@@ -1,3 +1,14 @@
+:root{
+  --bg-dark-mode:#1A1A1B;
+  --bg-post-color:#f0f0f1;
+  --bg-dark-post-color:#28272b;
+  --bg-post-hover-color:#a2a2a2;
+  --bg-dark-post-hover-color:#949497;
+  --fg-date-color:#0071db;
+  --fg-heart-default-color:#797A7E;
+  --fg-heart-liked-color:#d30d35;
+}
+
 #post{
   height:100%;
   margin: 6% 4% !important;
@@ -14,11 +25,14 @@
 
 @media (min-width:835px) {
     #post{
-      margin: 2% 0 0 18% !important;
+      /* margin: 2% 0 0 18% !important; */
+      margin: 0 !important;
+      padding: 2% 0 1% 18%;
       padding-right: 4%;
       display: inline-flex;
       justify-content: end;
-      width: 82%;
+      width: 100%;
+      min-height: 100vh;
     }
     #header{
       height: 100vh;
@@ -28,4 +42,19 @@
       padding: 10px;
       padding-top: 40px;
     }
+    .dark{
+      background-color: var(--bg-dark-mode);
+      color: white;
+    }
+    #post.dark .post,#header.dark .addPost{
+      background-color: var(--bg-dark-post-color);
+    }
+    #header.dark .tag{
+      color: white;
+    }
+    #header.dark .addPost:hover{
+      background-color: var(--bg-dark-post-hover-color);
+
+    }
+
 }

@@ -10,17 +10,23 @@ function App() {
   //Variable que almacena el valor de la pantalla en booleano
   const [isDesktop,setIsDesktop]=useState(window.innerWidth < 835);
 
+  //Variable que tratará de cambiar el aspecto de la página
+  const[darkMode,setDarkMode]=useState(false);
+
   //Evento que escucha cada vez que la pantalla cambia de tamaño
   window.addEventListener('resize',()=>{
     setIsDesktop(window.innerWidth < 835);
   });
 
+  //variable que controla la clase de modo obscuro
+  const dark= darkMode ? 'dark' : ''
+
   return (
     <>
-      <div id="header">
-        { isDesktop ? (<Header/>) : (<AsideDesktop/>)}
+      <div id="header" className={dark}>
+        { isDesktop ? (<Header/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={setDarkMode}/>)}
       </div>
-      <div id='post'>
+      <div id='post' className={dark}>
         <Post user={'github/mdo'} name={'User_00'} date={'14-09-2024'} content={'Vendo libro usado, como nuevo. $200 pesos a tratar.'}/>
         <Post user={'duckduckgo/gummibeer.dev'} name={'User_01'} date={'13-09-2024'} content={'Busco libro de inglés para un nivel 2.'}/>
         <Post user={'google/netflix.com'} name={'User_02'} date={'13-09-2024'} content={'Soy estudiante de arquitectura y estoy vendiendo un set de reglas'}/>
