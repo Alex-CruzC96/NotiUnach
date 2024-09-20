@@ -1,11 +1,14 @@
 import Image from "react-bootstrap/esm/Image"
 import ImgProfile from "./ImgProfile"
+import Form from 'react-bootstrap/Form'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { faBell } from "@fortawesome/free-solid-svg-icons"
 import { faGear } from "@fortawesome/free-solid-svg-icons"
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
+import { faMoon } from "@fortawesome/free-solid-svg-icons"
+import { faSun } from "@fortawesome/free-solid-svg-icons"
 import './AsideDesktop.css'
 import { useState } from "react"
 
@@ -58,7 +61,13 @@ const AsideDesktop = () => {
 
                     <div className="row position-absolute start-0 bottom-0 asideFoot py-3">
                         <div className="col text-center">
-                            Hola mundo
+                            <FontAwesomeIcon icon={faSun} size="lg"/>
+                            <Form.Check // prettier-ignore
+                            type="switch"
+                            id="custom-switch"
+                            className="d-inline mx-3"
+                            />
+                            <FontAwesomeIcon icon={faMoon} size="lg"/>
                         </div>
                     </div>
                 </div>
