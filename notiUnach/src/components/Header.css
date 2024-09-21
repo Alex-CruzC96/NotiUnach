@@ -1,0 +1,9 @@
+#user-Profile{
+    max-width: 76px;
+}
+
+@media (max-width:350px) {
+    #user-Profile{
+        max-width: 55px;
+    }
+}

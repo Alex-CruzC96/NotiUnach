@@ -38,7 +38,7 @@ function App() {
     <>
       <BrowserRouter>
           <div id="header" className={dark}>
-            { isDesktop ? (<Header/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody}/>)}
+            { isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4'}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody}/>)}
           </div>
 
         <Routes>
