@@ -10,3 +10,8 @@
 .option{
     cursor: pointer;
 }
+
+.no-decoration{
+    text-decoration: none !important;
+    color: white;
+}

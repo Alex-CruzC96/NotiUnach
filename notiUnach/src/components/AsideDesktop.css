@@ -16,10 +16,11 @@
     background-color: var(--bg-post-hover-color);
     color: white;
 }
+
 .no-decoration{
     text-decoration: none !important;
 }
-
+  
 @media (max-width:1122px) {
     p.tag{
         display: none !important;
