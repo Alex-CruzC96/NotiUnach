@@ -22,11 +22,23 @@ function App() {
   //variable que controla la clase de modo obscuro
   const dark= darkMode ? 'dark' : ''
 
+  //Función que cambia de estado a la variable que determina el modo obscuro
+  //También aplica la clase al body para no dejar huecos en otro color
+  function darkBody(){
+    setDarkMode(!darkMode);
+    if(!darkMode){
+      document.body.classList.add('dark');
+    }
+    else{
+      document.body.classList.remove('dark');
+    }
+  }
+
   return (
     <>
       <BrowserRouter>
           <div id="header" className={dark}>
-            { isDesktop ? (<Header/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={setDarkMode}/>)}
+            { isDesktop ? (<Header/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody}/>)}
           </div>
 
         <Routes>
@@ -51,7 +63,7 @@ function App() {
             }>
           </Route>
         </Routes>
-        
+
         <div id='footer'>
           { isDesktop ? (<Footer/>) : '' }
         </div>
