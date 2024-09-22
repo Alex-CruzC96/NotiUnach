@@ -31,6 +31,13 @@
   background-color: var(--bg-dark-post-color);
 }
 
+#profile.dark .tag{
+  color: white;
+}
+#profile.dark #changeName{
+  color: white;
+}
+
 @media (min-width:835px) {
     #post{
       /* margin: 2% 0 0 18% !important; */
@@ -64,10 +71,4 @@
 
     }
 
-    #profile.dark .tag{
-      color: white;
-    }
-    #profile.dark #changeName{
-      color: white;
-    }
 }

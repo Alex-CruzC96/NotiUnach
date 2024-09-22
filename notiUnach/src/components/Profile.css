@@ -1,3 +1,6 @@
 #profileImage{
     max-width: 150px;
 }
+#changeName{
+    outline: none;
+}
