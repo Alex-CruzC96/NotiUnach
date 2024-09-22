@@ -40,6 +40,9 @@
 #profile.dark .optionsProfile{
   background-color: var(--bg-dark-post-color);
 }
+#profile.dark .post{
+  background-color: var(--bg-dark-post-color) !important;
+}
 
 @media (min-width:835px) {
     #post{
@@ -76,5 +79,4 @@
     #profile.dark .optionsProfile:hover{
       background-color: var(--bg-dark-post-hover-color);
     }
-
 }

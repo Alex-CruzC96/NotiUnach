@@ -17,6 +17,11 @@
 .optionsProfile:hover{
     background-color: var(--bg-post-hover-color);
 }
+#profilePost{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
 @media (max-width:1122px) {
     #profileImage{
