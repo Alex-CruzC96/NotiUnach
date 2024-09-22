@@ -4,6 +4,7 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Button from "react-bootstrap/esm/Button";
+import Stack from 'react-bootstrap/Stack';
 import './Profile.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faP, faPen } from "@fortawesome/free-solid-svg-icons";
@@ -11,17 +12,26 @@ import { useState } from "react";
 
 const Profile=({user , name})=>{
 
+    //Variable que se ocupa de almacenar el nombre del usuario para poder cambiarlo luego
     const[nameValue,setNameValue]=useState(name);
     
+    //Función que activa el ícono de lápiz para poder editar el nombre
     function nameHover(){
         const pen=document.querySelector('#pen');
         pen.classList.remove('d-none');
     }
 
+    //Función que desactiva el ícono del lápiz 
     function leaveHover(){
         pen.classList.add('d-none');
     }
 
+    //Función que se ejecuta al clickear el lápiz
+    /*
+        Funciona de modo que oculta el parrafo
+        del nombre y activa el input y al volver
+        a dar click hace lo contrario
+    */
     function startEdit(){
         const nameNow=document.getElementById('name');
         const changeName=document.getElementById('changeName');
@@ -58,6 +68,13 @@ const Profile=({user , name})=>{
                         </span>
                     </Col>
                 </Row>
+                <div className="d-flex justify-content-center mt-3">
+                    <Stack direction="horizontal" gap={{'lg':5,'sm':4,'xs':1}} className="flex-wrap justify-content-center">
+                        <div className="p-1 px-sm-3 py-3 optionsProfile">Publicaciones guardadas</div>
+                        <div className="p-1 px-sm-3 py-3 optionsProfile">Tus publicaciones</div>
+                        <div className="p-1 px-sm-3 py-3 optionsProfile">Me gusta</div>
+                    </Stack>
+                </div>
             </Container>
         </>
     );

@@ -37,6 +37,9 @@
 #profile.dark #changeName{
   color: white;
 }
+#profile.dark .optionsProfile{
+  background-color: var(--bg-dark-post-color);
+}
 
 @media (min-width:835px) {
     #post{
@@ -69,6 +72,9 @@
     #header.dark .addPost:hover{
       background-color: var(--bg-dark-post-hover-color);
 
+    }
+    #profile.dark .optionsProfile:hover{
+      background-color: var(--bg-dark-post-hover-color);
     }
 
 }

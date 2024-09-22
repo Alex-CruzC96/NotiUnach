@@ -4,3 +4,34 @@
 #changeName{
     outline: none;
 }
+
+.optionsProfile{
+    background-color: var(--bg-post-color);
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    white-space: pre-wrap;
+    width: 150px;
+    font-weight: 500;
+}
+.optionsProfile:hover{
+    background-color: var(--bg-post-hover-color);
+}
+
+@media (max-width:1122px) {
+    #profileImage{
+        max-width: 100px;
+    }
+    .optionsProfile{
+        background-color: var(--bg-post-color);
+        border-radius: 15px;
+        cursor: pointer;
+        text-align: center;
+        white-space: pre-wrap;
+        width: 95px;
+        font-size: 70%;
+    }
+    .optionsProfile:hover{
+        background-color: var(--bg-post-color);
+    }
+}
