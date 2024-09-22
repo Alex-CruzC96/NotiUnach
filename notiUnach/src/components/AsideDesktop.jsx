@@ -13,7 +13,7 @@ import './AsideDesktop.css'
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-const AsideDesktop = ({ darkMode, setDarkMode }) => {
+const AsideDesktop = ({ darkMode, setDarkMode , user }) => {
 
     //Variables que sirven para el renderizado de ciertos componentes y sus animaciones
     const [hoverInicio, setHoverInicio] = useState(false);
@@ -26,7 +26,9 @@ const AsideDesktop = ({ darkMode, setDarkMode }) => {
             <div className="container-fluid">
                 <div className="row text-center">
                     <div className="col">
-                        <Image className="imageProfile" fluid src={ImgProfile + 'github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4'} roundedCircle />
+                        <Link to="/perfil">
+                            <Image className="imageProfile" fluid src={ImgProfile + user} roundedCircle />
+                        </Link>
                     </div>
                 </div>
                 <div className="row my-4 px-4 options">

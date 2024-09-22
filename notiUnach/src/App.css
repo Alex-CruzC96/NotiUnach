@@ -51,6 +51,11 @@
       padding-top: 40px;
     }
 
+    #profile{
+      margin: 0;
+      padding: 2% 0 1% 18%;
+    }
+
     #header.dark .tag{
       color: white;
     }
@@ -59,4 +64,10 @@
 
     }
 
+    #profile.dark .tag{
+      color: white;
+    }
+    #profile.dark #changeName{
+      color: white;
+    }
 }

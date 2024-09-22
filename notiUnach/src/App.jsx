@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Post from './components/Post'
+import Profile from './components/Profile'
 import AsideDesktop from './components/AsideDesktop'
 import './App.css'
 import { useState } from 'react'
@@ -38,10 +39,15 @@ function App() {
     <>
       <BrowserRouter>
           <div id="header" className={dark}>
-            { isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4'}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody}/>)}
+            { isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4'}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} user={'github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4'}/>)}
           </div>
 
         <Routes>
+          <Route path='/perfil' element={
+            <div id='profile' className={dark}>
+              <Profile user={'github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4'} name={'AlecRuz_c96'}/>
+            </div>
+            }/>
           <Route path='/' element={
             <div id='post' className={dark}>
               <Post user={'github/mdo'} name={'User_00'} date={'14-09-2024'} content={'Vendo libro usado, como nuevo. $200 pesos a tratar.'}/>
