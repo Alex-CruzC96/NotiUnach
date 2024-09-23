@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/esm/Button'
 import ImgProfile from './ImgProfile'
+import { Link } from 'react-router-dom'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
@@ -15,7 +16,9 @@ function Header({user, darkMode, setDarkMode}){
             <Container fluid className='pt-4'>
                 <Row>
                     <Col>
-                        <Image fluid src={ImgProfile+user} roundedCircle id='user-Profile'/>
+                        <Link to="/perfil">
+                            <Image fluid src={ImgProfile+user} roundedCircle id='user-Profile'/>
+                        </Link>
                     </Col>
                     <Col className='d-flex align-items-center justify-content-end pe-4'>
                         <Button className='bg-transparent border-0 p-0' onClick={setDarkMode}>
