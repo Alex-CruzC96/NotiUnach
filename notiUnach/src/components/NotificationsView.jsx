@@ -1,5 +1,6 @@
 import Container from "react-bootstrap/esm/Container";
 import Notification from "./Notification";
+import './NotificationView.css'
 
 
 const NotificationsView=()=>{
@@ -9,43 +10,11 @@ const NotificationsView=()=>{
             <Container fluid className="text-center pt-4">
                 <p className="fs-2">Notificaciones</p>
 
-                <div className="row row-cols-1">
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
-                    <div className="col my-2">
-                        <Notification/>
-                    </div>
+                <div id="notificaciones">
+                    <Notification user={'youtube/davie504'} name={'Davie504'} date={'30-09-2024'}/>
+                    <Notification user={'youtube/clavero'} name={'Clavero'} date={'30-09-2024'}/>
+                    <Notification user={'youtube/vintagebursche'} name={'Niklas'} date={'30-09-2024'}/>
+                    <Notification user={'youtube/victorabarca'} name={'Victor Abarca'} date={'30-09-2024'}/>
                 </div>
             </Container>
         </>
