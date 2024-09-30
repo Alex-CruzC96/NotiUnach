@@ -43,6 +43,9 @@
 #profile.dark .post{
   background-color: var(--bg-dark-post-color) !important;
 }
+#notification{
+  padding-bottom: 80px !important;
+}
 
 @media (min-width:835px) {
     #post{
@@ -65,6 +68,11 @@
     }
 
     #profile{
+      margin: 0;
+      padding: 2% 0 1% 18%;
+    }
+
+    #notification{
       margin: 0;
       padding: 2% 0 1% 18%;
     }
