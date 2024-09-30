@@ -3,7 +3,7 @@ import Footer from './components/Footer'
 import Post from './components/Post'
 import Profile from './components/Profile'
 import AsideDesktop from './components/AsideDesktop'
-import Notification from './components/Notification'
+import NotificationsView from './components/NotificationsView'
 import './App.css'
 import { useState } from 'react'
 import {BrowserRouter,Route, Routes} from 'react-router-dom'
@@ -71,7 +71,7 @@ function App() {
           </Route>
           <Route path='/notificaciones' element={
             <div id='notification'>
-              <Notification/>
+              <NotificationsView/>
             </div>
           }>
           </Route>

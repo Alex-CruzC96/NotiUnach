@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/esm/Container";
 import Post from "./Post";
 
-const Notification=()=>{
+const NotificationsView=()=>{
 
     return (
         <>
@@ -30,4 +30,4 @@ const Notification=()=>{
     );
 }
 
-export default Notification;
+export default NotificationsView;
