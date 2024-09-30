@@ -47,6 +47,10 @@
   padding-bottom: 80px !important;
 }
 
+#notification.dark .notification{
+  background-color: var(--bg-dark-post-color);
+}
+
 @media (min-width:835px) {
     #post{
       /* margin: 2% 0 0 18% !important; */

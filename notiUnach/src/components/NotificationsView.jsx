@@ -1,5 +1,6 @@
 import Container from "react-bootstrap/esm/Container";
-import Post from "./Post";
+import Notification from "./Notification";
+
 
 const NotificationsView=()=>{
 
@@ -10,19 +11,40 @@ const NotificationsView=()=>{
 
                 <div className="row row-cols-1">
                     <div className="col my-2">
-                        
+                        <Notification/>
                     </div>
                     <div className="col my-2">
-                        
+                        <Notification/>
                     </div>
                     <div className="col my-2">
-                        
+                        <Notification/>
                     </div>
                     <div className="col my-2">
-                        
+                        <Notification/>
                     </div>
                     <div className="col my-2">
-                        
+                        <Notification/>
+                    </div>
+                    <div className="col my-2">
+                        <Notification/>
+                    </div>
+                    <div className="col my-2">
+                        <Notification/>
+                    </div>
+                    <div className="col my-2">
+                        <Notification/>
+                    </div>
+                    <div className="col my-2">
+                        <Notification/>
+                    </div>
+                    <div className="col my-2">
+                        <Notification/>
+                    </div>
+                    <div className="col my-2">
+                        <Notification/>
+                    </div>
+                    <div className="col my-2">
+                        <Notification/>
                     </div>
                 </div>
             </Container>

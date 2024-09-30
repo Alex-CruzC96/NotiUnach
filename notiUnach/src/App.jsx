@@ -69,12 +69,14 @@ function App() {
             </div>
             }>
           </Route>
+          
           <Route path='/notificaciones' element={
-            <div id='notification'>
+            <div id='notification' className={dark}>
               <NotificationsView/>
             </div>
           }>
           </Route>
+
         </Routes>
 
         <div id='footer'>

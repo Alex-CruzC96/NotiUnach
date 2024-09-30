@@ -1,0 +1,4 @@
+.notification{
+    background-color: var(--bg-post-color);
+    border-radius: 10px;
+}
