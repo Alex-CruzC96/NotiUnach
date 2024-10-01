@@ -5,8 +5,9 @@ import Profile from './components/Profile'
 import AsideDesktop from './components/AsideDesktop'
 import NotificationsView from './components/NotificationsView'
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {BrowserRouter,Route, Routes} from 'react-router-dom'
+
 
 function App() {
 
