@@ -57,7 +57,7 @@ const Profile = ({ user, name }) => {
                 <Row className="text-center mt-3">
                     <Col>
                         <span onMouseEnter={nameHover} onMouseLeave={leaveHover} className="p-2 position-relative">
-                            <p id="name" className="fs-3 d-inline">{name}</p>
+                            <p id="name" className="fs-3 d-inline">{nameValue}</p>
 
                             <input onChange={(input) => setNameValue(input.target.value)}
                                 value={nameValue} id="changeName" type="text"

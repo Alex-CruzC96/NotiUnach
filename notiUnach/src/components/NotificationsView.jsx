@@ -15,6 +15,7 @@ const NotificationsView=()=>{
                     <Notification user={'youtube/clavero'} name={'Clavero'} date={'30-09-2024'}/>
                     <Notification user={'youtube/vintagebursche'} name={'Niklas'} date={'30-09-2024'}/>
                     <Notification user={'youtube/victorabarca'} name={'Victor Abarca'} date={'30-09-2024'}/>
+                    <Notification user={'youtube/portillo'} name={'Portillo'} date={'30-09-2024'}/>
                 </div>
             </Container>
         </>
