@@ -40,13 +40,13 @@ function App() {
     <>
       <BrowserRouter>
           <div id="header" className={dark}>
-            { isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4'}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} user={'github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4'}/>)}
+            { isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'}/>)}
           </div>
 
         <Routes>
           <Route path='/perfil' element={
             <div id='profile' className={dark}>
-              <Profile user={'github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4'} name={'AlecRuz_c96'}/>
+              <Profile user={'github/Alex-CruzC96'} name={'AlecRuz_c96'}/>
             </div>
             }/>
           <Route path='/' element={
