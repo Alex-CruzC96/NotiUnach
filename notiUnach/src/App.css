@@ -50,6 +50,9 @@
 #notification.dark .notification{
   background-color: var(--bg-dark-post-color);
 }
+#settings.dark .setting-option{
+  background-color: var(--bg-dark-post-color);
+}
 
 @media (min-width:835px) {
     #post{
@@ -94,8 +97,5 @@
     #settings{
       margin: 0;
       padding: 2% 0 1% 18%;
-    }
-    #settings.dark .setting-option{
-      background-color: var(--bg-dark-post-color);
     }
 }
