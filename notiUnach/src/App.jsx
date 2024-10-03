@@ -4,6 +4,7 @@ import Post from './components/Post'
 import Profile from './components/Profile'
 import AsideDesktop from './components/AsideDesktop'
 import NotificationsView from './components/NotificationsView'
+import Settings from './components/Settings'
 import './App.css'
 import { useState, useEffect } from 'react'
 import {BrowserRouter,Route, Routes} from 'react-router-dom'
@@ -77,6 +78,12 @@ function App() {
             </div>
           }>
           </Route>
+
+          <Route path='/configuracion' element={
+            <div id='settings' className={dark}>
+              <Settings/>
+            </div>
+          }></Route>
 
         </Routes>
 
