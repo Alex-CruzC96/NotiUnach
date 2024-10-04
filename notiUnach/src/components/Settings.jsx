@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import './Settings.css'
@@ -13,16 +14,18 @@ const Settings=()=>{
                 <p className="fs-2">Configuración</p>
 
                 {/* Esto es una opcion  */}
-                <Row className="mt-5 mx-2 p-3 text-start setting-option">
-                    <Col>
-                        <div className="border border-2 rounded-circle d-inline-flex align-items-center justify-content-center circulo-opcion">
-                            <FontAwesomeIcon icon={faUser} size="lg"/>
-                        </div>
-                        <span className="ms-3 d-inline-block">
-                            <p className="fs-5 m-0">Configuración de usuario</p>
-                        </span>
-                    </Col>
-                </Row>
+                <Link to={'/detalles-usuario'} className="no-decoracion">
+                    <Row className="mt-5 mx-2 p-3 text-start setting-option">
+                        <Col>
+                            <div className="border border-2 rounded-circle d-inline-flex align-items-center justify-content-center circulo-opcion">
+                                <FontAwesomeIcon icon={faUser} size="lg"/>
+                            </div>
+                            <span className="ms-3 d-inline-block">
+                                <p className="fs-5 m-0">Configuración de usuario</p>
+                            </span>
+                        </Col>
+                    </Row>
+                </Link>
 
                 <Row className="mt-4 mx-2 p-3 text-start setting-option">
                     <Col>

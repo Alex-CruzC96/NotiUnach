@@ -53,6 +53,9 @@
 #settings.dark .setting-option{
   background-color: var(--bg-dark-post-color);
 }
+#settings.dark .no-decoracion{
+  color: white;
+}
 
 @media (min-width:835px) {
     #post{
@@ -100,5 +103,10 @@
     }
     #settings.dark .setting-option:hover{
       background-color: var(--bg-dark-post-hover-color);
+    }
+
+    #detalleUser{
+      margin: 0;
+      padding: 2% 0 1% 18%;
     }
 }

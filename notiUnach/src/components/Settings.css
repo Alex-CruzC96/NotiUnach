@@ -14,9 +14,14 @@
 #cerrarSesion{
     color: var(--fg-heart-liked-color);
 }
+.no-decoracion{
+    text-decoration: none !important;
+    color: black;
+}
 
 @media (min-width:835px) {
     .setting-option:hover{
         background-color: var(--bg-post-hover-color);
     }
+    
 }
