@@ -2,7 +2,7 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import './Settings.css'
 
 const Settings=()=>{
@@ -12,6 +12,7 @@ const Settings=()=>{
             <Container fluid className="text-center pt-4">
                 <p className="fs-2">Configuración</p>
 
+                {/* Esto es una opcion  */}
                 <Row className="mt-5 mx-2 p-3 text-start setting-option">
                     <Col>
                         <div className="border border-2 rounded-circle d-inline-flex align-items-center justify-content-center circulo-opcion">
@@ -22,6 +23,19 @@ const Settings=()=>{
                         </span>
                     </Col>
                 </Row>
+
+                <Row className="mt-4 mx-2 p-3 text-start setting-option">
+                    <Col>
+                        <div className="border border-2 rounded-circle d-inline-flex align-items-center justify-content-center circulo-opcion" id="exit"> 
+                            <FontAwesomeIcon icon={faCircleXmark} size="lg" color="#AF1A1A"/>
+                        </div>
+                        <span className="ms-3 d-inline-block">
+                            <p className="fs-5 m-0" id="cerrarSesion">Cerrar sesión</p>
+                        </span>
+                    </Col>
+                </Row>
+
+
             </Container>
         </>
     );
