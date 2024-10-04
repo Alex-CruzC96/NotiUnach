@@ -56,6 +56,9 @@
 #settings.dark .no-decoracion{
   color: white;
 }
+#detalleUser.dark .archive{
+  color: white;
+}
 
 @media (min-width:835px) {
     #post{
