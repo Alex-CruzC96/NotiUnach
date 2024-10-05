@@ -4,6 +4,7 @@ import Col from "react-bootstrap/esm/Col";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Image from 'react-bootstrap/Image';
 import { useState } from 'react';
 
 const DetalleUsuario = ({dark}) => {
@@ -36,7 +37,10 @@ const DetalleUsuario = ({dark}) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Elige una foto de perfil</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>
+                    Hola mundo
+
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Cerrar
