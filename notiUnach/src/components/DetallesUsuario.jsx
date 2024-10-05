@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 
-const DetalleUsuario = () => {
+const DetalleUsuario = ({dark}) => {
 
     //Necesarias para modal
     const [show, setShow] = useState(false);
@@ -22,7 +22,7 @@ const DetalleUsuario = () => {
                     </Col>
                     <Col>
                         <Form.Group controlId="formFile" className="mb-3">
-                            <Form.Control type="file" className="bg-transparent archive" />
+                            <Form.Control type="file" data-bs-theme={dark?'dark':'light'}/>
                         </Form.Group>
                     </Col>
                     <Col className="">
@@ -32,17 +32,17 @@ const DetalleUsuario = () => {
 
             </Container>
 
-            <Modal show={show} onHide={handleClose} data-bs-theme="dark">
+            <Modal show={show} onHide={handleClose} data-bs-theme={dark?'dark':'light'} size="lg">
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Elige una foto de perfil</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Cerrar
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                        Guardar cambio
                     </Button>
                 </Modal.Footer>
             </Modal>

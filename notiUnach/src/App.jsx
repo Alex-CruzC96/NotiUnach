@@ -88,7 +88,7 @@ function App() {
 
           <Route path='/detalles-usuario' element={
             <div id='detalleUser' className={dark}>
-              <DetalleUsuario/>
+              <DetalleUsuario dark={darkMode}/>
             </div>
           }></Route>
 
