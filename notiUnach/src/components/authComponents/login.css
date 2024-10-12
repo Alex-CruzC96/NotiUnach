@@ -1,0 +1,16 @@
+#cajaContenedora{
+    height: 100vh;
+}
+
+#caja{
+    background-color: var(--bg-post-color);
+    display: flex;
+    width: 480px;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 40px;
+}
+
+#userIcon{
+    font-size: 80px;
+}
