@@ -13,7 +13,7 @@ function Footer(){
             <Container fluid className='text-center' id='contenedor'>
                 <Row>
                     <Col className='mt-3 mb-2 option'>
-                        <Link to="/" className='no-decoration'>
+                        <Link to="/home" className='no-decoration'>
                             <FontAwesomeIcon icon={faHouse}/>
                         </Link>
                     </Col>

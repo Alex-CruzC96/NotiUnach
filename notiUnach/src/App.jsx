@@ -6,6 +6,9 @@ import AsideDesktop from './components/AsideDesktop'
 import NotificationsView from './components/NotificationsView'
 import DetalleUsuario from './components/DetallesUsuario'
 import Settings from './components/Settings'
+import Login from './components/authComponents/login'
+import SignUp from './components/authComponents/signup'
+import Validation from './components/authComponents/validation'
 import './App.css'
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -43,7 +46,34 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/perfil' element={
+
+          <Route path='/' element={
+            <div id="login" className={dark}>
+              <Login/>
+            </div>
+          }/>
+
+          <Route path='/signup' element={
+            <div id='signup'>
+              <SignUp/>
+            </div>
+          }/>
+
+          <Route element={<Validation/>}>
+          
+            <Route path='/perfil' element={
+              <div>
+                <div id="header" className={dark}>
+                  {!isDesktop ? (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />) : ''}
+                </div>
+                <div id='profile' className={dark}>
+                  <Profile user={'github/Alex-CruzC96'} name={'AlecRuz_c96'} />
+                </div>
+              </div>
+            }/>
+          </Route>
+
+          {/* <Route path='/perfil' element={
             <div>
               <div id="header" className={dark}>
                 {!isDesktop ? (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />) : ''}
@@ -52,8 +82,8 @@ function App() {
                 <Profile user={'github/Alex-CruzC96'} name={'AlecRuz_c96'} />
               </div>
             </div>
-          } />
-          <Route path='/' element={
+          } /> */}
+          <Route path='/home' element={
             <div>
               <div id="header" className={dark}>
                 {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />)}

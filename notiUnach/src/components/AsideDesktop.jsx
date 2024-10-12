@@ -39,7 +39,7 @@ const AsideDesktop = ({ darkMode, setDarkMode , user }) => {
                 </div>
                 <div className="row mt-3 row-cols-1 g-3 p-3 pt-0 iconos">
                     <div className="col">
-                        <Link to="/" className="no-decoration">
+                        <Link to="/home" className="no-decoration">
                             <div className="options" onMouseEnter={() => setHoverInicio(true)} onMouseLeave={() => setHoverInicio(false)}>
                                 {hoverInicio ? <FontAwesomeIcon icon={faHouse} bounce className="tag" /> : <FontAwesomeIcon icon={faHouse} className="tag" />}
                                 <p className="d-inline ms-2 tag">Inicio</p>
