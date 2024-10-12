@@ -14,7 +14,7 @@ const Settings=()=>{
                 <p className="fs-2">Configuración</p>
 
                 {/* Esto es una opcion  */}
-                <Link to={'/detalles-usuario'} className="no-decoracion">
+                <Link to={'/detalles-usuario'} className="no-decoracion d-block">
                     <Row className="mt-5 mx-2 p-3 text-start setting-option">
                         <Col>
                             <div className="border border-2 rounded-circle d-inline-flex align-items-center justify-content-center circulo-opcion">

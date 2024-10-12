@@ -5,9 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import './signup.css'
 import { useState } from "react";
+import { useAuth } from "../../assets/auth/AuthProvider";
 
 export default function SignUp() {
     
@@ -16,6 +17,13 @@ export default function SignUp() {
     const [mail,setMail]=useState('');
     const [password,setPassword]=useState('');
     const [confirmPass,setConfirmPass]=useState('');
+    const auth=useAuth();
+
+    if(auth.isAuth){
+        return(
+            <Navigate to="/home"/>
+        );
+    }
 
     return (
         <>
