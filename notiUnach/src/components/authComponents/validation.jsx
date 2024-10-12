@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Outlet, Navigate } from "react-router-dom";
+import { useAuth } from "../../assets/auth/AuthProvider";
 
 export default function Validation(){
-    const [isAuth,setIsAuth]=useState(false);
+    const auth = useAuth();
 
-    return isAuth ? <Outlet/> : <Navigate to="/"/>
+    return auth.isAuth ? <Outlet/> : <Navigate to="/"/>
 }
