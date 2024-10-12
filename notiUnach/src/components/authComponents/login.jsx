@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import "./login.css"
 
 export default function Login() {
@@ -28,11 +29,31 @@ export default function Login() {
                                     <Form.Control type="password" placeholder="Ingresa tu constraseña" />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                    <Form.Check type="checkbox" label="Recordarme" />
+                                    <Row>
+                                        <Col>
+                                            <Form.Check type="checkbox" label="Recordarme" className=""/>
+                                        </Col>
+                                        <Col className="text-end">
+                                            <Link to="/signup"><p>Registrarme</p></Link>
+                                        </Col>
+                                    </Row>
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
-                                    Iniciar sesión
-                                </Button>
+                                <Form.Group className="text-center">
+                                    <Row>
+                                        <Col>
+                                            <Button variant="primary" type="submit">
+                                                Iniciar sesión
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                            <Link>
+                                                <p className="mt-2">Olvidé mi contraseña</p>
+                                            </Link>
+                                        </Col>
+                                    </Row>
+                                </Form.Group>
                             </Form>
                         </Col>
                     </Row>
