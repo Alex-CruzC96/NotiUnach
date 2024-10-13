@@ -3,18 +3,59 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "./login.css"
 import { useState } from "react";
 import { useAuth } from "../../assets/auth/AuthProvider";
+import { API_URL } from "../../assets/auth/constants";
 
 export default function Login() {
 
     const [mail,setMail]=useState('');
     const [password,setPassword]=useState('');
+    const [errorResponse, setErrorResponse] = useState('');
     const auth=useAuth();
+    const goTo=useNavigate();
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(`${API_URL}/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    mail,
+                    password
+                })
+            });
+
+            if (response.ok) {
+                console.log("El usuario se autenticó correctamente!!!");
+                setErrorResponse('');
+
+                goTo("/home");
+            }
+            else {
+                console.log("Ha ocurrido un error");
+                const json = await response.json();
+                if (json.body && json.body.error) {
+                    setErrorResponse(json.body.error);
+                } else {
+                    setErrorResponse('Error desconocido');
+                }
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     if(auth.isAuth){
         return(
@@ -31,7 +72,7 @@ export default function Login() {
                             <FontAwesomeIcon icon={faCircleUser} id="userIcon" />
                         </Col>
                         <Col className="mt-3">
-                            <Form className="text-start">
+                            <Form className="text-start" onSubmit={handleSubmit}>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Correo electrónico</Form.Label>
                                     <Form.Control type="email" placeholder="Ingresa tu correo electrónico" value={mail} onChange={(e)=>setMail(e.target.value)}/>
@@ -54,6 +95,12 @@ export default function Login() {
                                 <Form.Group className="text-center">
                                     <Row>
                                         <Col>
+                                            {errorResponse && 
+                                            <Alert variant='danger'>
+                                                {errorResponse}
+                                            </Alert>
+                                            }
+
                                             <Button variant="primary" type="submit">
                                                 Iniciar sesión
                                             </Button>
