@@ -18,6 +18,7 @@ export default function SignUp() {
     const [mail,setMail]=useState('');
     const [password,setPassword]=useState('');
     const [confirmPass,setConfirmPass]=useState('');
+    const [errorResponse,setErrorResponse]=useState('');
     const auth=useAuth();
 
     async function handleSubmit(e){
@@ -41,6 +42,12 @@ export default function SignUp() {
             }
             else{
                 console.log("Ha ocurrido un error");
+                const json=await response.json();
+                if (json.body && json.body.error) {
+                    setErrorResponse(json.body.error);
+                } else {
+                    setErrorResponse('Error desconocido');
+                }
             }
 
         }catch(error){
