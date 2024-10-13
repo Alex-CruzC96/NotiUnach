@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import './signup.css'
 import { useState } from "react";
 import { useAuth } from "../../assets/auth/AuthProvider";
@@ -21,6 +21,7 @@ export default function SignUp() {
     const [confirmPass, setConfirmPass] = useState('');
     const [errorResponse, setErrorResponse] = useState('');
     const auth = useAuth();
+    const goTo=useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -41,6 +42,8 @@ export default function SignUp() {
             if (response.ok) {
                 console.log("El usuario se creó bien!!");
                 setErrorResponse('');
+
+                goTo("/");
             }
             else {
                 console.log("Ha ocurrido un error");
