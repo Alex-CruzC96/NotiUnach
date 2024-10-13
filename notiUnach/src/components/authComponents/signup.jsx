@@ -40,6 +40,7 @@ export default function SignUp() {
 
             if (response.ok) {
                 console.log("El usuario se creó bien!!");
+                setErrorResponse('');
             }
             else {
                 console.log("Ha ocurrido un error");
