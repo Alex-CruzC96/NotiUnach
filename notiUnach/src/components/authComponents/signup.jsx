@@ -9,6 +9,7 @@ import { Link, Navigate } from "react-router-dom";
 import './signup.css'
 import { useState } from "react";
 import { useAuth } from "../../assets/auth/AuthProvider";
+import { API_URL } from "../../assets/auth/constants"
 
 export default function SignUp() {
     
@@ -18,6 +19,34 @@ export default function SignUp() {
     const [password,setPassword]=useState('');
     const [confirmPass,setConfirmPass]=useState('');
     const auth=useAuth();
+
+    async function handleSubmit(e){
+        e.preventDefault();
+
+        try{
+            const response=await fetch(`${API_URL}/signup`,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    name,
+                    mail,
+                    password
+                })
+            });
+
+            if(response.ok){
+                console.log("El usuario se creó bien!!");
+            }
+            else{
+                console.log("Ha ocurrido un error");
+            }
+
+        }catch(error){
+            console.log(error);
+        }
+    }
 
     if(auth.isAuth){
         return(
@@ -37,7 +66,7 @@ export default function SignUp() {
 
                     <Row className="mt-2 text-start">
                         <Col>
-                            <Form>
+                            <Form onSubmit={handleSubmit}>
                                 <Form.Group className="mb-1" controlId="formGroupName">
                                     <Form.Label>Nombre de usuario</Form.Label>
                                     <Form.Control type="text" placeholder="Ingrese su nombre" value={name} onChange={(e)=>{setName(e.target.value)}}/>
