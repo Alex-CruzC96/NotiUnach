@@ -34,6 +34,7 @@ export default function SignUp() {
                 },
                 body: JSON.stringify({
                     name,
+                    lastName,
                     mail,
                     password
                 })
