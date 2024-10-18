@@ -26,6 +26,11 @@ export default function SignUp() {
     async function handleSubmit(e) {
         e.preventDefault();
 
+        if(password !== confirmPass){
+            setErrorResponse('La contraseña debe coincidir');
+            return;
+        }
+
         try {
             const response = await fetch(`${API_URL}/signup`, {
                 method: "POST",
