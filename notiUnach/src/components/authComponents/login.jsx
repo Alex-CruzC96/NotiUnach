@@ -38,6 +38,9 @@ export default function Login() {
             if (response.ok) {
                 console.log("El usuario se autenticó correctamente!!!");
                 setErrorResponse('');
+                
+                //Llamada a handleLogin para manejar el login
+                
 
                 goTo("/home");
             }
