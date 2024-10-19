@@ -4,9 +4,21 @@ import Col from "react-bootstrap/esm/Col";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../assets/auth/AuthProvider";
 import './Settings.css'
 
 const Settings=()=>{
+    const auth=useAuth();
+
+    async function logOut(){
+
+        try{
+            auth.handleLogout();
+
+        }catch(error){
+            console.error('Ha ocurrido un error inesperado: '+error);
+        }
+    }
 
     return (
         <>
@@ -27,7 +39,7 @@ const Settings=()=>{
                     </Row>
                 </Link>
 
-                <Row className="mt-4 mx-2 p-3 text-start setting-option">
+                <Row className="mt-4 mx-2 p-3 text-start setting-option" onClick={logOut}>
                     <Col>
                         <div className="border border-2 rounded-circle d-inline-flex align-items-center justify-content-center circulo-opcion" id="exit"> 
                             <FontAwesomeIcon icon={faCircleXmark} size="lg" color="#AF1A1A"/>

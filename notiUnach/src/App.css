@@ -56,6 +56,12 @@
 #settings.dark .no-decoracion{
   color: white;
 }
+#login.dark #caja{
+  background-color: var(--bg-dark-post-color);
+}
+#signup.dark #caja{
+  background-color: var(--bg-dark-post-color);
+}
 
 @media (min-width:835px) {
     #post{

@@ -56,7 +56,7 @@ function App() {
             } />
 
             <Route path='/signup' element={
-              <div id='signup'>
+              <div id='signup' className={dark}>
                 <SignUp />
               </div>
             } />
