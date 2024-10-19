@@ -12,6 +12,7 @@ app.use('/api/signup',require('./routes/signup'));
 app.use('/api/login',require('./routes/login'));
 app.use('/api/signout',require('./routes/signout'));
 app.use('/api/userPicture',require('./routes/user-profile-picture'));
+app.use('/api/uploadPhoto',require('./routes/addProfilePhoto'))
 
 app.get('/',(req,res)=>{
     res.send({status:200});
