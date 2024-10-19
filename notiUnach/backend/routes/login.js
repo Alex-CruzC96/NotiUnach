@@ -55,7 +55,7 @@ router.post("/",(req,res)=>{
         }
 
         //Generación de tokens web
-        const accesToken=jwt.sign({
+        const accessToken=jwt.sign({
             id:user.id,
             name:user.name,
             lastName:user.lastName
@@ -72,7 +72,7 @@ router.post("/",(req,res)=>{
                 name:user.name,
                 lastName:user.lastName
             },
-            accesToken,
+            accessToken,
             refreshToken
         }));
     });
