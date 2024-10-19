@@ -12,9 +12,10 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { useAuth } from "../assets/auth/AuthProvider";
 
-const Profile = ({ name }) => {
+const Profile = ({ name, lastName, profilePicture}) => {
     //Almacena todo el contenido de usuario
     const {user}=useAuth();
+    const userProfilePicture=!user.profilePicture.error ? user.profilePicture : ''
 
     //Variable que se ocupa de almacenar el nombre del usuario para poder cambiarlo luego
     const [nameValue, setNameValue] = useState(name);
