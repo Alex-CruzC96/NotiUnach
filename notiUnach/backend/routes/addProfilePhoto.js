@@ -14,10 +14,10 @@ const storage=multer.diskStorage({
     filename:(req,file,cb)=>{
         const filePath=path.join(storagePath,`${req.body.userId}-${file.originalname}`);
         if(fs.existsSync(filePath)){
-            cb(new Error('Archivo ya existente'),filePath);
+            return cb(new Error('Archivo ya existente'), filePath);
         }
         else{
-            cb(null,filePath);
+            return cb(null, filePath);
         }
     }
 });
@@ -49,10 +49,17 @@ router.post('/', upload.single('profilePicture'), async (req,res)=>{
             error:"No se ha especificado el archivo"
         }));
     }
+    if(!req.body.userId){
+        return res.status(400).json(jsonResponse(400,{
+            error:"No se ha especificado el ID del usuario"
+        }));
+    }
 
     //Necesitamos la llave foránea de usuario para saber a quien le pertenece
     const userId=req.body.userId;
     const filePath=req.file.path;
+    const fileExtension=path.extname(req.file.originalname).slice(1);
+
 
     /**
      * Pasos para la inserción de una foto de perfil:
@@ -93,6 +100,31 @@ router.post('/', upload.single('profilePicture'), async (req,res)=>{
                 filePath:filePath
             }));
         }
+
+        //Caso en el que la imagen no está registrada
+        const result=await db.query(
+            'INSERT INTO  multimedia(archive_type,archive_size,archive_path) VALUES(?,?,?)',
+            [fileExtension,req.file.size,filePath]
+        );
+        multimediaId=result.insertId;
+
+        //Verificación de foto de perfil existente del usuario
+        await db.query(
+            'UPDATE user_profile_picture SET is_using = FALSE WHERE user_id = ? AND is_using = TRUE',
+            [userId]
+        );
+
+        //Inserción de la nueva foto en la tabla de fotos de perfil
+        await db.query(
+            'INSERT INTO user_profile_picture(user_id,multimedia_id,is_using) VALUES(?,?,TRUE)',
+            [userId,multimediaId]
+        );
+
+        //Resultado
+        return res.status(200).json(jsonResponse(200,{
+            message:"Archivo cargado y guardado con éxito!!!",
+            filePath:filePath
+        }));
     }
     catch(error){
         console.error('Error al guardar la imagen en la base de datos');
@@ -100,11 +132,6 @@ router.post('/', upload.single('profilePicture'), async (req,res)=>{
             error:"Error en la base de datos"
         }));
     }
-    
-    res.status(200).json(jsonResponse(200,{
-        message:"Archivo cargado correctamente",
-        filePath:req.file.path
-    }));
 });
 
 module.exports = router;
