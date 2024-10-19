@@ -8,10 +8,13 @@ import Stack from 'react-bootstrap/Stack';
 import './Profile.css'
 import Post from "./Post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faP, faPen } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
+import { useAuth } from "../assets/auth/AuthProvider";
 
-const Profile = ({ user, name }) => {
+const Profile = ({ name }) => {
+    //Almacena todo el contenido de usuario
+    const {user}=useAuth();
 
     //Variable que se ocupa de almacenar el nombre del usuario para poder cambiarlo luego
     const [nameValue, setNameValue] = useState(name);
@@ -57,7 +60,7 @@ const Profile = ({ user, name }) => {
                 <Row className="text-center mt-3">
                     <Col>
                         <span onMouseEnter={nameHover} onMouseLeave={leaveHover} className="p-2 position-relative">
-                            <p id="name" className="fs-3 d-inline">{nameValue}</p>
+                            <p id="name" className="fs-3 d-inline">{user.name+' '+user.lastName}</p>
 
                             <input onChange={(input) => setNameValue(input.target.value)}
                                 value={nameValue} id="changeName" type="text"

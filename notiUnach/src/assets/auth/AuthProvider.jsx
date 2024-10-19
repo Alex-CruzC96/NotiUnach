@@ -13,11 +13,17 @@ export function AuthProvider({children}){
     const[isAuth,setIsAuth]=useState(false);
     const[accessToken,setAccessToken]=useState(localStorage.getItem('accessToken') || '');
     const[refreshToken,setRefreshToken]=useState(localStorage.getItem('refreshToken') || '');
+    const[user,setUser]=useState(null);
 
     useEffect(()=>{
         //Si el token existe entonces nos logea 
         if(accessToken){
             setIsAuth(true);
+
+            const storedUser=localStorage.getItem('user');
+            if(storedUser){
+                setUser(JSON.parse(storedUser));
+            }
         }
     },[accessToken]);
 
@@ -63,9 +69,14 @@ export function AuthProvider({children}){
                 //Teniendo los datos guardados almacenamos los tokens en localhost
                 localStorage.setItem('accessToken', data.body.accessToken);
                 localStorage.setItem('refreshToken', data.body.refreshToken);
+                localStorage.setItem('user',JSON.stringify(data.body.user));
+
                 //Y cambiamos el estado de las dos variables
                 setAccessToken(data.accessToken);
                 setRefreshToken(data.refreshToken);
+
+                //Le damos valor a user
+                setUser(data.body.user);
 
                 //La autenticación fue un éxito
                 setIsAuth(true);
@@ -84,13 +95,15 @@ export function AuthProvider({children}){
     function handleLogout(){
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
+        localStorage.removeItem('user');
         setAccessToken('');
         setRefreshToken('');
+        setUser(null);
         setIsAuth(false);
     }
 
     return(
-        <AuthContext.Provider value={{ isAuth, setIsAuth, getAccessToken, handleLogin, handleLogout}}>
+        <AuthContext.Provider value={{ isAuth, user, setIsAuth, getAccessToken, handleLogin, handleLogout}}>
             {children}
         </AuthContext.Provider>
     );
