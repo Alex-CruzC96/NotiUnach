@@ -12,7 +12,7 @@ const storage=multer.diskStorage({
         cb(null,storagePath);
     },
     filename:(req,file,cb)=>{
-        const filePath=path.join(storagePath,`${Date.now()}-${file.originalname}`);
+        const filePath=path.join(storagePath,`${req.body.userId}-${file.originalname}`);
         if(fs.existsSync(filePath)){
             cb(new Error('Archivo ya existente'),filePath);
         }
@@ -71,7 +71,7 @@ router.post('/', upload.single('profilePicture'),(req,res)=>{
      * foráneas de usuario y multimedia, además de ingresar "is_using=true"
      */
     try{
-        
+
     }
     catch(error){
         console.error('Error al guardar la imagen en la base de datos');
