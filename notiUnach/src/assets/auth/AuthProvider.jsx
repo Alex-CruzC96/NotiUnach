@@ -32,6 +32,46 @@ export function AuthProvider({children}){
         return accessToken;
     }
 
+    //Función para retornar la foto de perfil en uso
+    async function getUserProfilePicture(userId){
+        try{
+            //Hace la consulta y espera una respuesta
+            const response=await fetch(`${API_URL}/userPicture/${userId}`,{
+                method:'GET',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization':`Bearer ${getAccessToken()}`
+                }
+            });
+
+            /**
+             * Si la consulta devuelve un código 200
+             * significa que la consulta fue un éxito y que
+             * la respuesta contiene la url de la imagen del
+             * usuario.
+             * De lo contrario puede significar que el usuario
+             * aun no tiene foto de perfil o que hubo un error
+             */
+            if(response.ok){
+                const data=await response.json();
+                return data.body.profilePicture;
+            }
+            else{
+                const errorData=await response.json();
+                return {
+                    success:false,
+                    error:errorData
+                };
+            }
+
+        }catch(error){
+            return {
+                success:false,
+                error
+            }
+        }
+    }
+
     async function handleLogin(mail, password){
         try{
             //Se dirige a la API para intentar iniciar sesión
@@ -80,6 +120,18 @@ export function AuthProvider({children}){
 
                 //La autenticación fue un éxito
                 setIsAuth(true);
+
+                //Obtención y almacenamiento de la foto de perfil
+                const profilePicture=await getUserProfilePicture(data.body.user.id);
+                setUser(prevUser => ({
+                    ...prevUser,
+                    profilePicture
+                }));
+                localStorage.setItem('user',JSON.stringify({
+                    ...data.body.user,
+                    profilePicture
+                }));
+
                 //Retorna success 
                 return { success: true };
               } else {
