@@ -15,6 +15,10 @@ const DetalleUsuario = ({dark}) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    async function changeProfilePicture(e) {
+        e.preventDefault();
+    }
+
     return (
         <>
             <Container fluid className="pt-4">
@@ -23,9 +27,12 @@ const DetalleUsuario = ({dark}) => {
                         <p className="fs-4">Actualizar foto de perfil</p>
                     </Col>
                     <Col>
-                        <Form.Group controlId="formFile" className="mb-3">
-                            <Form.Control type="file" data-bs-theme={dark?'dark':'light'}/>
-                        </Form.Group>
+                        <Form onSubmit={changeProfilePicture}>
+                            <Form.Group controlId="formFile" className="mb-3">
+                                <Form.Control type="file" data-bs-theme={dark?'dark':'light'}/>
+                                <Button type="submit" variant="success" className="mt-2">Guardar</Button>
+                            </Form.Group>
+                        </Form>
                     </Col>
                     <Col className="">
                         <Button variant="secondary" onClick={handleShow}>Elegir imagen previamente subida</Button>{' '}
