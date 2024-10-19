@@ -42,7 +42,7 @@ const upload=multer({
     }
 });
 
-router.post('/', upload.single('profilePicture'),(req,res)=>{
+router.post('/', upload.single('profilePicture'), async (req,res)=>{
     //En caso no se suba nada
     if(!req.file){
         return res.status(400).json(jsonResponse(400,{
@@ -71,7 +71,28 @@ router.post('/', upload.single('profilePicture'),(req,res)=>{
      * foráneas de usuario y multimedia, además de ingresar "is_using=true"
      */
     try{
+        //Verificación si la imagen ya está registrada
+        const checkImage= await db.query(
+            'SELECT id FROM multimedia WHERE archive_path = ?',
+            [filePath]
+        );
 
+        let multimediaId;
+
+        //Si esto se cumple, la imagen ya está registrada
+        if(checkImage.length > 0){
+            multimediaId=checkImage[0].id;
+            //Como la imagen ya está registrada, simplemente actualiza el registro
+            await db.query(
+                'UPDATE user_profile_picture SET is_using=TRUE WHERE user_id=? AND multimedia_id = ?',
+                [userId,multimediaId]
+            );
+
+            return res.status(200).json(jsonResponse(200,{
+                message:"La imagen ya existía y se actualizó el registro a 'en uso'",
+                filePath:filePath
+            }));
+        }
     }
     catch(error){
         console.error('Error al guardar la imagen en la base de datos');
