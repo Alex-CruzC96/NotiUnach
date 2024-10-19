@@ -16,7 +16,6 @@ import { AuthProvider } from './assets/auth/AuthProvider'
 
 
 function App() {
-
   //Variable que almacena el valor de la pantalla en booleano
   const [isDesktop, setIsDesktop] = useState(window.innerWidth < 835);
 
@@ -101,7 +100,7 @@ function App() {
                   </div>
 
                   <div id='profile' className={dark}>
-                    <Profile user={'github/Alex-CruzC96'} name={'AlecRuz_c96'} />
+                    <Profile/>
                   </div>
 
                   <div id='footer'>
