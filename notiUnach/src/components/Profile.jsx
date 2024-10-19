@@ -18,7 +18,7 @@ const Profile = () => {
     const userProfilePicture=!user.profilePicture.error ? user.profilePicture : ImgProfile+'google/unavatar.io';
 
     //Variable que se ocupa de almacenar el nombre del usuario para poder cambiarlo luego
-    const [nameValue, setNameValue] = useState(name);
+    const [nameValue, setNameValue] = useState(user.name+' '+user.lastName);
 
     //Función que activa el ícono de lápiz para poder editar el nombre
     function nameHover() {

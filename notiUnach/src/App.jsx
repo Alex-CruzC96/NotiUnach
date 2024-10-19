@@ -66,7 +66,7 @@ function App() {
               <Route path='/home' element={
                 <div>
                   <div id="header" className={dark}>
-                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />)}
+                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody}/>)}
                   </div>
 
                   <div id='post' className={dark}>

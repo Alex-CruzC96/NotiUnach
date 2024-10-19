@@ -12,8 +12,12 @@ import { faSun } from "@fortawesome/free-solid-svg-icons"
 import './AsideDesktop.css'
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { useAuth } from "../assets/auth/AuthProvider";
 
-const AsideDesktop = ({ darkMode, setDarkMode , user }) => {
+const AsideDesktop = ({ darkMode, setDarkMode }) => {
+    //Variable que contendrá la foto de perfil
+    const { user }=useAuth();
+    const userProfilePicture=!user.profilePicture.error ? user.profilePicture : ImgProfile+'google/unavatar.io';
 
     //Variables que sirven para el renderizado de ciertos componentes y sus animaciones
     const [hoverInicio, setHoverInicio] = useState(false);
@@ -27,7 +31,7 @@ const AsideDesktop = ({ darkMode, setDarkMode , user }) => {
                 <div className="row text-center">
                     <div className="col">
                         <Link to="/perfil">
-                            <Image className="imageProfile" fluid src={ImgProfile + user} roundedCircle />
+                            <Image className="imageProfile" fluid src={userProfilePicture} roundedCircle />
                         </Link>
                     </div>
                 </div>

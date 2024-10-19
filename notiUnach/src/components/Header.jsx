@@ -9,15 +9,18 @@ import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faSun , faMoon } from '@fortawesome/free-solid-svg-icons'
+import { useAuth } from "../assets/auth/AuthProvider";
 
-function Header({user, darkMode, setDarkMode}){
+function Header({darkMode, setDarkMode}){
+    const { user }=useAuth();
+    const userProfilePicture=!user.profilePicture.error ? user.profilePicture : ImgProfile+'google/unavatar.io';
     return(
         <>
             <Container fluid className='pt-4'>
                 <Row>
                     <Col>
                         <Link to="/perfil">
-                            <Image fluid src={ImgProfile+user} roundedCircle id='user-Profile'/>
+                            <Image fluid src={userProfilePicture} roundedCircle id='user-Profile'/>
                         </Link>
                     </Col>
                     <Col className='d-flex align-items-center justify-content-end pe-4'>
