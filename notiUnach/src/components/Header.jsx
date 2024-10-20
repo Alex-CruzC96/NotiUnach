@@ -13,7 +13,11 @@ import { useAuth } from "../assets/auth/AuthProvider";
 
 function Header({darkMode, setDarkMode}){
     const { user }=useAuth();
-    const userProfilePicture=!user.profilePicture.error ? user.profilePicture : ImgProfile+'google/unavatar.io';
+
+    const userProfilePicture = user?.profilePicture && !user.profilePicture.error 
+    ? `../../backend/${user.profilePicture}` 
+    : `${ImgProfile}google/unavatar.io`;
+
     return(
         <>
             <Container fluid className='pt-4'>

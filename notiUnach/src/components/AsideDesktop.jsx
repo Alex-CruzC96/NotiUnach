@@ -14,10 +14,14 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../assets/auth/AuthProvider";
 
+
 const AsideDesktop = ({ darkMode, setDarkMode }) => {
     //Variable que contendrá la foto de perfil
     const { user }=useAuth();
-    const userProfilePicture=!user.profilePicture.error ? user.profilePicture : ImgProfile+'google/unavatar.io';
+
+    const userProfilePicture = user?.profilePicture && !user.profilePicture.error 
+    ? `../../backend/${user.profilePicture}` 
+    : `${ImgProfile}google/unavatar.io`;
 
     //Variables que sirven para el renderizado de ciertos componentes y sus animaciones
     const [hoverInicio, setHoverInicio] = useState(false);

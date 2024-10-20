@@ -15,7 +15,10 @@ import { useAuth } from "../assets/auth/AuthProvider";
 const Profile = () => {
     //Almacena todo el contenido de usuario
     const {user}=useAuth();
-    const userProfilePicture=!user.profilePicture.error ? user.profilePicture : ImgProfile+'google/unavatar.io';
+    
+    const userProfilePicture = user?.profilePicture && !user.profilePicture.error 
+    ? `../../backend/${user.profilePicture}` 
+    : `${ImgProfile}google/unavatar.io`;
 
     //Variable que se ocupa de almacenar el nombre del usuario para poder cambiarlo luego
     const [nameValue, setNameValue] = useState(user.name+' '+user.lastName);
