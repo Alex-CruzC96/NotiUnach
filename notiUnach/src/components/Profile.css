@@ -1,5 +1,6 @@
 #profileImage{
-    max-width: 150px;
+    height: 100px;
+    width: 100px;
 }
 #changeName{
     outline: none;

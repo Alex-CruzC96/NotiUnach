@@ -34,12 +34,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const fileName = `${req.userId}-${file.originalname}`; // Usar `req.userId`
-    const filePath = path.join(storagePath, fileName);
-    if (fs.existsSync(filePath)) {
-      return cb(new Error('Archivo ya existente'), fileName);
-    } else {
-      return cb(null, fileName);
-    }
+    cb(null, fileName);
   }
 });
 

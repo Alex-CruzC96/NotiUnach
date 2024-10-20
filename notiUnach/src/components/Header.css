@@ -1,5 +1,6 @@
 #user-Profile{
-    max-width: 76px;
+    width: 76px;
+    height: 76px;
 }
 
 @media (max-width:350px) {

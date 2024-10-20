@@ -15,7 +15,7 @@ import { useAuth } from "../assets/auth/AuthProvider";
 const Profile = () => {
     //Almacena todo el contenido de usuario
     const {user}=useAuth();
-    
+
     const userProfilePicture = user?.profilePicture && !user.profilePicture.error 
     ? `../../backend/${user.profilePicture}` 
     : `${ImgProfile}google/unavatar.io`;
