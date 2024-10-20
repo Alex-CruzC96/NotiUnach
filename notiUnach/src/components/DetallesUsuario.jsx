@@ -16,42 +16,12 @@ const DetalleUsuario = ({ dark }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { user, getAccessToken } = useAuth();
+    const { user, getAccessToken, updateProfilePicture } = useAuth();
     const [file, setFile] = useState(null);
 
     async function changeProfilePicture(e) {
         e.preventDefault();
-        if (!file) {
-          alert("Por favor, selecciona un archivo");
-          return;
-        }
-        const formData = new FormData();
-        formData.append('profilePicture', file);
-        
-        console.log('userId:', user.id); // Verificar que userId está siendo enviado
-    
-        try {
-          const response = await fetch(`${API_URL}/uploadPhoto?userId=${user.id}`, {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${getAccessToken()}`
-            },
-            body: formData
-          });
-      
-          if (!response.ok) {
-            const errorData = await response.text(); 
-            console.error('Error:', errorData);
-            alert(errorData); 
-            return;
-          }
-      
-          const data = await response.json();
-          console.log('Archivo publicado y guardado con éxito!: ', data);
-        } catch (error) {
-          console.error("Error al subir el archivo: ", error);
-          alert("Ha ocurrido un error inesperado");
-        }
+        await updateProfilePicture(file);
     }
 
     return (
