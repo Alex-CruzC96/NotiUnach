@@ -6,6 +6,7 @@ import AsideDesktop from './components/AsideDesktop'
 import NotificationsView from './components/NotificationsView'
 import DetalleUsuario from './components/DetallesUsuario'
 import Settings from './components/Settings'
+import MakePublication from './components/MakePublication'
 import Login from './components/authComponents/login'
 import SignUp from './components/authComponents/signup'
 import Validation from './components/authComponents/validation'
@@ -155,11 +156,26 @@ function App() {
                     {isDesktop ? (<Footer />) : ''}
                   </div>
                 </div>
-              } />
+              }/>
+
+              <Route path='/crear-publicacion'element={
+                <div>
+                    <div id="header" className={dark}>
+                      {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />)}
+                    </div>
+
+                    <div id='makePublication'>
+                      <MakePublication dark={dark}/>
+                    </div>
+
+                    <div id='footer'>
+                      {isDesktop ? (<Footer />) : ''}
+                    </div>
+                </div>
+              }/>
+
             </Route>
-
           </Routes>
-
         </BrowserRouter>
       </AuthProvider>
     </>

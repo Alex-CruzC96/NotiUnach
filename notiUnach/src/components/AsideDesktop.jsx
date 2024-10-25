@@ -40,10 +40,12 @@ const AsideDesktop = ({ darkMode, setDarkMode }) => {
                     </div>
                 </div>
                 <div className="row my-4 px-4 options">
-                    <div className="col p-3 ps-3 rounded-pill addPost">
-                        <FontAwesomeIcon icon={faCirclePlus} size="lg" className="tag" />
-                        <p className="m-0 ms-2 d-inline tag">Publicar</p>
-                    </div>
+                    <Link to='/crear-publicacion' className="no-decoration text-black">
+                        <div className="col p-3 ps-3 rounded-pill addPost">
+                            <FontAwesomeIcon icon={faCirclePlus} size="lg" className="tag" />
+                            <p className="m-0 ms-2 d-inline tag">Publicar</p>
+                        </div>
+                    </Link>
                 </div>
                 <div className="row mt-3 row-cols-1 g-3 p-3 pt-0 iconos">
                     <div className="col">
