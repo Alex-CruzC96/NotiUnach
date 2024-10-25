@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
+import CK from "./CkEditor/CK"
 
 const MakePublication=({dark})=>{
     return(
@@ -8,7 +9,7 @@ const MakePublication=({dark})=>{
             <Container fluid className="pt-4">
                 <Row>
                     <Col>
-                        <p>HOLA MUNDO!!!!</p>
+                        <CK/>
                     </Col>
                 </Row>
             </Container>
