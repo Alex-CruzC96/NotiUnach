@@ -21,7 +21,7 @@ function Footer(){
                         <FontAwesomeIcon icon={faMagnifyingGlass}/>
                     </Col>
                     <Col className='mt-3 mb-2 option'>
-                        <Link to="/publicar" className='no-decoration'>
+                        <Link to="/crear-publicacion" className='no-decoration'>
                             <FontAwesomeIcon icon={faPlusCircle}/>
                         </Link>
                     </Col>
