@@ -43,10 +43,6 @@ router.get('/',async (req,res)=>{
             error:"Ocurrió un problema con la consulta"
         }));
     }
-
-    return res.status(200).json(jsonResponse(200,{
-        message:"El get está funcionando bien"
-    }));
 });
 
 module.exports=router;
