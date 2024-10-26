@@ -11,7 +11,7 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import './Post.css'
 
-function Post({user,name,date,content}){
+function Post({source,name,date,content}){
     //Esta variable debe estar en función de una API
     const [like,setLike]=useState(false);
     const [savePost,setSavePost]=useState(false);
@@ -35,7 +35,7 @@ function Post({user,name,date,content}){
                 <Row>
                     <Col>
                         <div className="img">
-                            <Image className='img-user' fluid src={ImgProfile+user} roundedCircle/>
+                            <Image className='img-user' fluid src={source} roundedCircle/>
                         </div>
                         <div className='d-inline-block ps-2'>
                             <p className="fs-5 m-0">{name}</p>

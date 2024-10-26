@@ -75,7 +75,7 @@
       padding: 2% 0 1% 18%;
       padding-right: 4%;
       display: inline-flex;
-      justify-content: end;
+      justify-content: start;
       width: 100%;
       min-height: 100vh;
     }
