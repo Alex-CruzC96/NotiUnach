@@ -62,11 +62,11 @@ router.post('/',upload.single('upload'),async(req,res)=>{
             }));
         }
 
-        const fileUrl=`/uploads/${fileName}`;
+        // const fileUrl=`/uploads/${fileName}`;
         
-        return res.status(201).json(jsonResponse(201,{
-            url:fileUrl
-        }));
+        return res.status(201).json({
+            url:`http://localhost:5000/uploads/${fileName}`
+        });
 
     }catch(error){
         console.error('Error al subir la imagen (estoy en la línea 53 de la API): ',error);
