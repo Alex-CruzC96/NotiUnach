@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+import { API_URL } from "../../assets/auth/constants";
+import { useAuth } from "../../assets/auth/AuthProvider";
 
 import {
 	InlineEditor,
@@ -68,6 +70,7 @@ export default function App({data,setData}) {
 	const editorContainerRef = useRef(null);
 	const editorRef = useRef(null);
 	const [isLayoutReady, setIsLayoutReady] = useState(false);
+	const auth=useAuth();
 
 	useEffect(() => {
 		setIsLayoutReady(true);
@@ -249,6 +252,12 @@ export default function App({data,setData}) {
 		placeholder: '¡¡Crea tu primera publicación!!',
 		table: {
 			contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+		},
+		simpleUpload:{
+			uploadUrl:`${API_URL}/uploadImage`,
+			headers:{
+				'Authorization':`Bearer ${auth.getAccessToken()}`
+			}
 		}
 	};
 
