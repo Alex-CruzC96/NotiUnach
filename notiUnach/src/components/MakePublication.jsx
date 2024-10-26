@@ -3,14 +3,18 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import CK from "./CkEditor/CK"
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { useState } from "react";
 
 const MakePublication=({dark})=>{
     const [data,setData]=useState('');
 
-    function showData(){
+    function createPost(e){
         // console.log(CKEditor.getData());
+        e.preventDefault();
         alert(data);
+
+        
     }
 
     return(
@@ -28,7 +32,9 @@ const MakePublication=({dark})=>{
                 </Row>
                 <Row className="pt-4">
                     <Col>
-                        <Button onClick={showData}>Pruebame!!!</Button>
+                        <Form>
+                            <Button type="submit" variant="primary" onClick={(e)=>createPost(e)}>Publicar</Button>
+                        </Form>
                     </Col>
                 </Row>
             </Container>

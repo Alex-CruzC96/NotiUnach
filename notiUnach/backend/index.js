@@ -16,6 +16,7 @@ app.use('/api/userPicture',require('./routes/user-profile-picture'));
 app.use('/api/uploadPhoto',require('./routes/addProfilePhoto'));
 app.use('/api/uploadImage',require('./routes/addImages'));
 app.use('/uploads', express.static(path.join(__dirname, 'localstorage/images')));
+app.use('/api/createPost',require('./routes/createPost'));
 
 app.get('/',(req,res)=>{
     res.send({status:200});
