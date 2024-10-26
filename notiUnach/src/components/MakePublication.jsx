@@ -4,6 +4,7 @@ import Col from "react-bootstrap/esm/Col";
 import CK from "./CkEditor/CK"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 import { useState } from "react";
 import { API_URL } from "../assets/auth/constants";
 import { useAuth } from "../assets/auth/AuthProvider";
@@ -11,6 +12,7 @@ import { useAuth } from "../assets/auth/AuthProvider";
 const MakePublication=({dark})=>{
     const [data,setData]=useState('');
     const auth=useAuth();
+    const [respuesta,setRespuesta]=useState(null);
 
     async function createPost(e){
         // console.log(CKEditor.getData());
@@ -36,7 +38,7 @@ const MakePublication=({dark})=>{
                 return;
             }
 
-            alert('Publicación creada con éxito!!!');
+            setRespuesta(result.message);
             setData('');
         }
         catch(error){
@@ -61,6 +63,7 @@ const MakePublication=({dark})=>{
                 </Row>
                 <Row className="pt-4">
                     <Col>
+                        {respuesta ? <Alert variant="success">{respuesta}</Alert> : ''}
                         <Form>
                             <Button type="submit" variant="primary" onClick={(e)=>createPost(e)}>Publicar</Button>
                         </Form>
