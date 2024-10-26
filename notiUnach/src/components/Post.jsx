@@ -53,9 +53,31 @@ function Post({postId,source,name,date,content}){
         fetchLikeStatus();
     },[user.id,postId]);
 
-    const likePost=()=>{
-        setLike(!like);
+    const likePost=async ()=>{
         //Mandar a llamar a la API para dar LIKE
+        try{
+            const response=await fetch(`${API_URL}/likePost`,{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    userId:user.id,
+                    postId
+                })
+            });
+
+            if(response.ok){
+                setLike(!like);
+            }
+            else{
+                console.error("Error al dar like al post");
+            }
+        }
+        catch(error){
+            console.error("Ocurrió un problema al dar like");
+        }
+
     }
 
     const save=()=>{

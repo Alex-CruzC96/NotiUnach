@@ -30,7 +30,6 @@ function App() {
   //Evento que escucha cada vez que la pantalla cambia de tamaño
   window.addEventListener('resize', () => {
     setIsDesktop(window.innerWidth < 835);
-    console.log(user);
   });
 
   useEffect(()=>{

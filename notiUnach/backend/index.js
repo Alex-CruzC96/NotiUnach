@@ -20,6 +20,7 @@ app.use('/api/createPost',require('./routes/createPost'));
 app.use('/api/getAllPosts',require('./routes/getAllPosts'));
 app.use('/api/getYourPosts',require('./routes/getYourPosts'));
 app.use('/api/isLiked',require('./routes/isLiked'));
+app.use('/api/likePost',require('./routes/likePost'));
 
 app.get('/',(req,res)=>{
     res.send({status:200});
