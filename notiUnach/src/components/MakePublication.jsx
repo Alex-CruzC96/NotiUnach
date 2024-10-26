@@ -38,8 +38,13 @@ const MakePublication=({dark})=>{
                 return;
             }
 
-            setRespuesta(result.message);
+            setRespuesta(result.body.message);
             setData('');
+
+            setTimeout(()=>{
+                setRespuesta('');
+            },2000);
+            
         }
         catch(error){
             console.error('Ha ocurrido un error al contactar con la API: ',error);

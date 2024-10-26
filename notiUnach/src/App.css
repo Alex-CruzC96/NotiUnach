@@ -63,6 +63,11 @@
   background-color: var(--bg-dark-post-color);
 }
 
+#makePublication{
+  padding-bottom: 20%;
+  
+}
+
 @media (min-width:835px) {
     #post{
       /* margin: 2% 0 0 18% !important; */
@@ -119,5 +124,6 @@
     #makePublication{
       margin: 0;
       padding: 2% 0 1% 18%;
+      
     }
 }
