@@ -37,6 +37,7 @@ const MakePublication=({dark})=>{
             }
 
             alert('Publicación creada con éxito!!!');
+            setData('');
         }
         catch(error){
             console.error('Ha ocurrido un error al contactar con la API: ',error);
