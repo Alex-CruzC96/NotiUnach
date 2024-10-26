@@ -34,7 +34,7 @@ function App() {
 
   useEffect(()=>{
     fetchPosts();
-  });
+  },[]);
 
   const fetchPosts=async()=>{
     try{
