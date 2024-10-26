@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 
 const MakePublication=({dark})=>{
-    const [data,setData]=useState('Hola mundo!!!');
+    const [data,setData]=useState('');
 
     function showData(){
         // console.log(CKEditor.getData());
@@ -18,10 +18,15 @@ const MakePublication=({dark})=>{
             <Container fluid className="pt-4">
                 <Row>
                     <Col>
+                        <h2>Crear publicación</h2>
+                    </Col>
+                </Row>
+                <Row className="pt-5">
+                    <Col>
                         <CK data={data} setData={setData}/>
                     </Col>
                 </Row>
-                <Row>
+                <Row className="pt-4">
                     <Col>
                         <Button onClick={showData}>Pruebame!!!</Button>
                     </Col>
