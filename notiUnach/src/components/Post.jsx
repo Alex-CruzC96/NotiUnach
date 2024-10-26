@@ -2,21 +2,21 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/esm/Image'
-import ImgProfile from './ImgProfile'
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-regular-svg-icons'
 import { faBookmark } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Post.css'
 import './CkEditor/ImgStyles.css'
 import { useAuth } from '../assets/auth/AuthProvider'
+import { API_URL } from '../assets/auth/constants'
 
 function Post({postId,source,name,date,content}){
     //Contenido del usuario que tiene una sesión iniciada 
     const { user }=useAuth();
-    
+
     //Esta variable debe estar en función de una API
     const [like,setLike]=useState(false);
     const [savePost,setSavePost]=useState(false);
@@ -26,6 +26,32 @@ function Post({postId,source,name,date,content}){
     let bookMarkClass=savePost? 'saved' : '';
 
     const url=`../../backend/${source}`;
+
+    useEffect(()=>{
+        const fetchLikeStatus = async () =>{
+            try{
+
+                const response=await fetch(`${API_URL}/isLiked/${user.id}/${postId}`,{
+                    method:'GET',
+                    headers:{
+                        'Content-type':'application/json',
+                    }
+                });
+
+                const result = await response.json();
+                if(response.ok){
+                    setLike(result.body.isLiked);
+                }
+                else{
+                    console.error("Error al verificar si el post te gusta");
+                }
+            }
+            catch(error){
+                console.error('Ha ocurrido un error con la comunicación');
+            }
+        };
+        fetchLikeStatus();
+    },[user.id,postId]);
 
     const likePost=()=>{
         setLike(!like);
