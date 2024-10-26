@@ -19,6 +19,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'localstorage/images')))
 app.use('/api/createPost',require('./routes/createPost'));
 app.use('/api/getAllPosts',require('./routes/getAllPosts'));
 app.use('/api/getYourPosts',require('./routes/getYourPosts'));
+app.use('/api/isLiked',require('./routes/isLiked'));
 
 app.get('/',(req,res)=>{
     res.send({status:200});

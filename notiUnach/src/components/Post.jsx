@@ -11,8 +11,12 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import './Post.css'
 import './CkEditor/ImgStyles.css'
+import { useAuth } from '../assets/auth/AuthProvider'
 
-function Post({source,name,date,content}){
+function Post({postId,source,name,date,content}){
+    //Contenido del usuario que tiene una sesión iniciada 
+    const { user }=useAuth();
+    
     //Esta variable debe estar en función de una API
     const [like,setLike]=useState(false);
     const [savePost,setSavePost]=useState(false);

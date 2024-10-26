@@ -13,7 +13,7 @@ import Validation from './components/authComponents/validation'
 import './App.css'
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AuthProvider } from './assets/auth/AuthProvider'
+import { AuthProvider, useAuth } from './assets/auth/AuthProvider'
 import { API_URL } from './assets/auth/constants'
 
 
@@ -30,6 +30,7 @@ function App() {
   //Evento que escucha cada vez que la pantalla cambia de tamaño
   window.addEventListener('resize', () => {
     setIsDesktop(window.innerWidth < 835);
+    console.log(user);
   });
 
   useEffect(()=>{
@@ -104,7 +105,7 @@ function App() {
 
                   <div id='post' className={dark}>
                     {posts.map((post,index)=>(
-                      <Post key={index} name={`${post.name} ${post.lastName}`} date={post.date} content={post.body} source={post.profile_picture}/>
+                      <Post key={index} postId={post.id} name={`${post.name} ${post.lastName}`} date={post.date} content={post.body} source={post.profile_picture}/>
                     ))}
                   </div>
 
