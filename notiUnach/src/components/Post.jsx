@@ -56,7 +56,7 @@ function Post({source,name,date,content}){
                 </Row>
                 <Row className='px-1'>
                     <Col>
-                        <p className="fs-6">{content}</p>
+                        <div className="post-content" dangerouslySetInnerHTML={{ __html: content }}></div>
                         <Button className='bg-transparent border-0 p-0' onClick={()=>likePost()}>
                             <FontAwesomeIcon icon={faHeart} size='lg' className={'corazon '+classHeart}/>
                         </Button>{''}
