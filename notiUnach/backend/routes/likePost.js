@@ -34,6 +34,24 @@ router.post('/',async (req,res)=>{
                 INSERT INTO liked_post (user_id,post_id)
                 VALUES (?,?)    
             `,[userId,postId]);
+
+            //Obtener el id del creador del post
+            const [postRows]=await db.query('SELECT user_id FROM post WHERE id=?',[postId]);
+            const postOwner=postRows[0].user_id;
+
+            //Nombre de quien da like
+            const [userRows]=await db.query('SELECT name, lastName FROM user WHERE id = ?',[userId]);
+            const userName=userRows[0].name+' '+userRows[0].lastName;
+
+            if(userId !== postOwner){
+                const message=`A ${userName} le ha gustado tu post`;
+                const date=new Date().toISOString().slice(0,19).replace('T',' ');
+
+                await db.query(`
+                    INSERT INTO notifications (user_sends,user_receives,post_id,message,date)
+                    VALUES (?,?,?,?,?)
+                `,[userId,postOwner,postId,message,date]);
+            }
         }
 
         return res.status(200).json(jsonResponse(200,{
