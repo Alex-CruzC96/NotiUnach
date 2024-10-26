@@ -20,6 +20,8 @@ function Post({source,name,date,content}){
     let classHeart=like ? 'liked' : '';
     let bookMarkClass=savePost? 'saved' : '';
 
+    const url=`../../backend/${source}`;
+
     const likePost=()=>{
         setLike(!like);
         //Mandar a llamar a la API para dar LIKE
@@ -29,17 +31,26 @@ function Post({source,name,date,content}){
         setSavePost(!savePost);
         //Mandar a llamar a la API para guardar POST
     }
+
+    const formatDate = (isoString) => {
+        const date = new Date(isoString);
+        const year = date.getFullYear();
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        return `${year}-${month}-${day}`;
+    }
+
     return(
         <>
             <Container fluid className='post p-2'>
                 <Row>
                     <Col>
                         <div className="img">
-                            <Image className='img-user' fluid src={source} roundedCircle/>
+                            <Image className='img-user' fluid src={url} roundedCircle/>
                         </div>
                         <div className='d-inline-block ps-2'>
                             <p className="fs-5 m-0">{name}</p>
-                            <p className="date fs-6 m-0">{date}</p>
+                            <p className="date fs-6 m-0">{formatDate(date)}</p>
                         </div>
                     </Col>
                 </Row>
