@@ -65,7 +65,7 @@ router.post('/',upload.single('upload'),async(req,res)=>{
         // const fileUrl=`/uploads/${fileName}`;
         
         return res.status(201).json({
-            url:`http://localhost:5000/uploads/${fileName}`
+            url:`http://192.168.0.138:5000/uploads/${fileName}`
         });
 
     }catch(error){

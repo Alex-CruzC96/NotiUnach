@@ -10,6 +10,7 @@ import { faComment } from '@fortawesome/free-regular-svg-icons'
 import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import './Post.css'
+import './CkEditor/ImgStyles.css'
 
 function Post({source,name,date,content}){
     //Esta variable debe estar en función de una API
@@ -56,7 +57,7 @@ function Post({source,name,date,content}){
                 </Row>
                 <Row className='px-1'>
                     <Col>
-                        <div className="post-content" dangerouslySetInnerHTML={{ __html: content }}></div>
+                        <div className="ck-content" dangerouslySetInnerHTML={{ __html: content }}></div>
                         <Button className='bg-transparent border-0 p-0' onClick={()=>likePost()}>
                             <FontAwesomeIcon icon={faHeart} size='lg' className={'corazon '+classHeart}/>
                         </Button>{''}

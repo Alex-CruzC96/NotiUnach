@@ -1,0 +1,24 @@
+.ck-content .image {
+    display: block;
+    margin: 1em auto;
+}
+  
+.ck-content .image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.ck-content .image_resized img {
+  max-width: 100%;
+  height: auto;
+}
+
+.ck-content .image_inline {
+  display: inline-block;
+}
+
+.ck-content .image_block {
+  display: block;
+  margin: 1em 0;
+}
+  
