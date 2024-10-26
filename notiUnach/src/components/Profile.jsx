@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { useAuth } from "../assets/auth/AuthProvider";
+import { API_URL } from "../assets/auth/constants";
 
 const Profile = () => {
     //Almacena todo el contenido de usuario
@@ -23,6 +24,9 @@ const Profile = () => {
     //Variable que se ocupa de almacenar el nombre del usuario para poder cambiarlo luego
     const [nameValue, setNameValue] = useState(user.name+' '+user.lastName);
 
+    //Arreglo que contendrá todo el contenido de los posts seleccionados
+    const [posts,setPosts]=useState([]);
+
     //Función que activa el ícono de lápiz para poder editar el nombre
     function nameHover() {
         const pen = document.querySelector('#pen');
@@ -33,6 +37,34 @@ const Profile = () => {
     function leaveHover() {
         pen.classList.add('d-none');
     }
+
+    //Función que realizará el fetch para obtener los posts
+    async function getPosts() {
+        try{
+            const response=await fetch(`${API_URL}/getYourPosts/${user.id}`,{
+                method:'GET',
+                headers:{
+                    'Content-type':'application/json'
+                }
+            });
+
+            const result=await response.json();
+
+            if(response.ok){
+                setPosts(result.body.posts);
+            }
+            else{
+                console.error("Ocurrió un error: ",error);
+            }
+        }
+        catch(error){
+            console.error("Ha ocurrido un error en la comunicación con la API");
+        }
+    }
+
+    useEffect(()=>{
+        getPosts();
+    },[]);
 
     //Función que se ejecuta al clickear el lápiz
     /*
@@ -86,18 +118,9 @@ const Profile = () => {
 
                 {/* En este apartado se renderizarán los post que se soliciten */}
                 <div id="profilePost" className="mt-5 mb-5 pb-3">
-                    <Post
-                        user={'readcv/elenatorro'}
-                        name={'User_03'}
-                        date={'12-09-2024'}
-                        content={'Mi primer post en la página, ¡Qué emoción!'}
-                    />
-                    <Post
-                        user={'x/midudev'}
-                        name={'miDudev'}
-                        date={'09-08-2024'}
-                        content={'Lorem ipsum dolor sit amet consectetur adipiscing elit, pulvinar mi nec interdum integer taciti. Ridiculus neque posuere nulla sociosqu, rhoncus ac fusce curabitur, conubia eget metus. Metus sagittis arcu molestie enim luctus in praesent auctor, faucibus pellentesque ligula penatibus conubia et tempor risus elementum, dui integer ac habitant blandit pretium tristique. Aliquet quam velit augue sem morbi mauris sagittis iaculis risus pharetra porttitor cras, vel et integer est nulla placerat odio vestibulum montes varius. Natoque faucibus tempus a lobortis conubia ad risus elementum phasellus, mattis scelerisque suscipit porttitor hendrerit arcu parturient interdum, odio montes inceptos ornare neque posuere tempor non. Neque suspendisse curae donec quam facilisi imperdiet eleifend torquent aliquam porta, a sagittis himenaeos vulputate ante bibendum cras ridiculus pulvinar, vitae augue habitant nascetur fringilla diam suscipit enim cum.'}
-                    />
+                    {posts.map((post,index)=>(
+                        <Post key={index} name={`${post.name} ${post.lastName}`} date={post.date} content={post.body} source={post.profile_picture}/>
+                    ))}
                 </div>
             </Container>
         </>

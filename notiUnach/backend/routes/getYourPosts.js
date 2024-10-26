@@ -11,9 +11,15 @@ const db = mysql.createPool({
     port: process.env.DB_PORT
 });
 
-router.get('/', async (req,res)=>{
+router.get('/:userId', async (req,res)=>{
     
-    const { userId }=req.body;
+    const { userId }=req.params;
+
+    if(!userId){
+        return res.status(400).json(jsonResponse(400,{
+            error:"Hace falta un ID para realizar la consulta"
+        }));
+    }
 
     try{
         const [rows] = await db.query(`
