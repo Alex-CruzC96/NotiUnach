@@ -22,7 +22,7 @@ router.get('/',async (req,res)=>{
             LEFT JOIN user_profile_picture ON user.id = user_profile_picture.user_id 
             AND user_profile_picture.is_using = TRUE
             LEFT JOIN multimedia ON user_profile_picture.multimedia_id = multimedia.id
-            ORDER BY post.date DESC
+            ORDER BY post.date DESC, post.id DESC
             `
         );
 
