@@ -119,7 +119,7 @@ const Profile = () => {
                 {/* En este apartado se renderizarán los post que se soliciten */}
                 <div id="profilePost" className="mt-5 mb-5 pb-3">
                     {posts.map((post,index)=>(
-                        <Post key={index} name={`${post.name} ${post.lastName}`} date={post.date} content={post.body} source={post.profile_picture}/>
+                        <Post key={index} postId={post.id} name={`${post.name} ${post.lastName}`} date={post.date} content={post.body} source={post.profile_picture}/>
                     ))}
                 </div>
             </Container>

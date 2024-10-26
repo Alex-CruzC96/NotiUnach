@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/esm/Image'
 import Button from 'react-bootstrap/Button';
+import ImgProfile from './ImgProfile';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-regular-svg-icons'
@@ -25,7 +26,7 @@ function Post({postId,source,name,date,content}){
     let classHeart=like ? 'liked' : '';
     let bookMarkClass=savePost? 'saved' : '';
 
-    const url=`../../backend/${source}`;
+    const url=source ? `../../backend/${source}` : `${ImgProfile}google/unavatar.io`;
 
     useEffect(()=>{
         const fetchLikeStatus = async () =>{
