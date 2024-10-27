@@ -1,9 +1,13 @@
 import Container from "react-bootstrap/esm/Container";
 import Notification from "./Notification";
 import './NotificationView.css'
+import { useState, useEffect } from "react";
+import {API_URL} from '../assets/auth/constants'
+import {useAuth} from '../assets/auth/AuthProvider'
 
 
 const NotificationsView=()=>{
+    const
 
     return (
         <>
