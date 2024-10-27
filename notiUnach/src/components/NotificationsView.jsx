@@ -7,7 +7,40 @@ import {useAuth} from '../assets/auth/AuthProvider'
 
 
 const NotificationsView=()=>{
-    const
+    const { user } =useAuth();
+    const [notifications,setNotifications]=useState([]);
+
+    const fetchNotifications=async()=>{
+        try{
+            const response=await fetch(`${API_URL}/getNotifications/${user.id}`,{
+                method:'GET',
+                headers:{
+                    'Content-type':'application/json'
+                }
+            });
+
+            const result=await response.json();
+
+            if(response.ok){
+                setNotifications(result.body.notifications);
+            }
+        }
+        catch(error){
+            console.error("Ha ocurrido un error con la comunicación de la API");
+        }
+    }
+
+    useEffect(()=>{
+        fetchNotifications();
+    },[]);
+
+    const formatDate = (isoString) => {
+        const date = new Date(isoString);
+        const year = date.getFullYear();
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        return `${year}-${month}-${day}`;
+    }
 
     return (
         <>
@@ -15,11 +48,15 @@ const NotificationsView=()=>{
                 <p className="fs-2">Notificaciones</p>
 
                 <div id="notificaciones">
-                    <Notification user={'youtube/davie504'} name={'Davie504'} date={'30-09-2024'}/>
-                    <Notification user={'youtube/clavero'} name={'Clavero'} date={'30-09-2024'}/>
-                    <Notification user={'youtube/vintagebursche'} name={'Niklas'} date={'30-09-2024'}/>
-                    <Notification user={'youtube/victorabarca'} name={'Victor Abarca'} date={'30-09-2024'}/>
-                    <Notification user={'youtube/portillo'} name={'Portillo'} date={'30-09-2024'}/>
+                    {notifications.map((notification,index)=>(
+                        <Notification 
+                        key={index} 
+                        name={notification.sender_name+' '+notification.sender_lastName} 
+                        message={notification.message} 
+                        url={notification.profile_picture}
+                        date={formatDate(notification.date)}
+                        />
+                    ))}
                 </div>
             </Container>
         </>
