@@ -5,7 +5,8 @@ import './Notification.css'
 
 const Notification=({url,name,message,date})=>{
 
-    const source='../../backend/'+url;
+    const defaultUrl=`${ImgProfile}google/unavatar.io`;
+    const source='../../backend/'+url || defaultUrl;
 
     return (
         <>
