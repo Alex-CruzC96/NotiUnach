@@ -11,10 +11,45 @@ const db = mysql.createPool({
     port: process.env.DB_PORT
 });
 
-router.get('',async (req,res)=>{
-    return res.status(200).json(jsonResponse(200,{
-        message:"Funciona bien!"
-    }));
+router.get('/:userId',async (req,res)=>{
+    const { userId }=req.params;
+
+    if(!userId){
+        return res.status(400).json(jsonResponse(400,{
+            error:"Hacen falta parámetros"
+        }));
+    }
+
+    try{
+        const [rows] = await db.query(`
+            SELECT post.*, user.name, user.lastName,
+            multimedia.archive_path AS profile_picture
+            FROM liked_post
+            JOIN post ON liked_post.post_id = post.id
+            JOIN user ON post.user_id = user.id
+            LEFT JOIN user_profile_picture ON user.id = user_profile_picture.user_id
+            AND user_profile_picture.is_using = TRUE
+            LEFT JOIN multimedia ON user_profile_picture.multimedia_id = multimedia.id
+            WHERE liked_post.user_id = ?
+            ORDER BY post.date DESC, post.id    
+        `,[userId]);
+
+        if(rows.length === 0){
+            return res.status(404).json(jsonResponse(404,{
+                message:"El usuario no ha dado like a ningún post"
+            }));
+        }
+
+        return res.status(200).json(jsonResponse(200,{
+            posts:rows
+        }));
+    }
+    catch(error){
+        console.error("Ha ocurrido un error en la consulta: ",error);
+        return res.status(500).json(jsonResponse(500,{
+            error:"Ocurrió un error en la consulta"
+        }));
+    }
 });
 
 module.exports=router;

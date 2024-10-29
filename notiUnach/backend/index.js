@@ -22,6 +22,7 @@ app.use('/api/getYourPosts',require('./routes/getYourPosts'));
 app.use('/api/isLiked',require('./routes/isLiked'));
 app.use('/api/likePost',require('./routes/likePost'));
 app.use('/api/getNotifications',require('./routes/getYourNotifications'));
+app.use('/api/getLikedPosts',require('./routes/yourLikedPosts'));
 
 app.get('/',(req,res)=>{
     res.send({status:200});
