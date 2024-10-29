@@ -51,7 +51,32 @@ function Post({postId,source,name,date,content}){
                 console.error('Ha ocurrido un error con la comunicación');
             }
         };
+
+        const fetchSaveStatus=async()=>{
+            try{
+                const response=await fetch(`${API_URL}/isSaved/${user.id}/${postId}`,{
+                    method:'GET',
+                    headers:{
+                        'Content-type':'application/json'
+                    }
+                });
+
+                const result=await response.json();
+
+                if(response.ok){
+                    setSavePost(result.body.isSaved);
+                }
+                else{
+                    console.error('Error al verifiar si el post está almacenado');
+                }
+            }
+            catch(error){
+                console.error("Ocurrió un error en la comunicación: ",error);
+            }
+        }
+
         fetchLikeStatus();
+        fetchSaveStatus();
     },[user.id,postId]);
 
     const likePost=async ()=>{

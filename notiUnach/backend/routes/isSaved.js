@@ -25,7 +25,7 @@ router.get('/:userId/:postId',async(req,res)=>{
         const [rows]=await db.query('SELECT 1 FROM saved_post WHERE user_id = ? AND post_id = ?',[userId,postId]);
         const isSaved=rows.length > 0;
         return res.status(200).json(jsonResponse(200,{
-            isSaved
+            isSaved:isSaved
         }));
     }
     catch(error){
