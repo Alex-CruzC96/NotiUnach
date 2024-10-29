@@ -106,9 +106,29 @@ function Post({postId,source,name,date,content}){
 
     }
 
-    const save=()=>{
-        setSavePost(!savePost);
-        //Mandar a llamar a la API para guardar POST
+    const save=async()=>{
+        try{
+            const response=await fetch(`${API_URL}/savePost`,{
+                method:'POST',
+                headers:{
+                    'Content-type':'application/json'
+                },
+                body:JSON.stringify({
+                    userId:user.id,
+                    postId
+                })
+            });
+
+            if(response.ok){
+                setSavePost(!savePost);
+            }
+            else{
+                console.error("Error al guardar el post");
+            }
+        }
+        catch(error){
+            console.error("Ocurre un problema al tratar de guardar el post: ",error);
+        }
     }
 
     const formatDate = (isoString) => {
