@@ -62,6 +62,31 @@ const Profile = () => {
         }
     }
 
+    async function getLikedPosts() {
+        try{
+
+            const response=await fetch(`${API_URL}/getLikedPosts/${user.id}`,{
+                method:'GET',
+                headers:{
+                    'Content-type':'application/json'
+                }
+            });
+
+            const result=await response.json();
+
+            if(response.ok){
+                setPosts(result.body.posts);
+            }
+            else{
+                console.error("Ocurrio un error: ",error);
+            }
+
+        }
+        catch(error){
+            console.error("Ha ocurrido un error en la consulta");
+        }
+    }
+
     useEffect(()=>{
         getPosts();
     },[]);
@@ -111,8 +136,8 @@ const Profile = () => {
                 <div className="d-flex justify-content-center mt-3">
                     <Stack direction="horizontal" gap={{ 'lg': 5, 'sm': 4, 'xs': 1 }} className="flex-wrap justify-content-center">
                         <div className="p-1 px-sm-3 py-3 optionsProfile">Publicaciones guardadas</div>
-                        <div className="p-1 px-sm-3 py-3 optionsProfile">Tus publicaciones</div>
-                        <div className="p-1 px-sm-3 py-3 optionsProfile">Me gusta</div>
+                        <div className="p-1 px-sm-3 py-3 optionsProfile" onClick={getPosts}>Tus publicaciones</div>
+                        <div className="p-1 px-sm-3 py-3 optionsProfile" onClick={getLikedPosts}>Me gusta</div>
                     </Stack>
                 </div>
 
