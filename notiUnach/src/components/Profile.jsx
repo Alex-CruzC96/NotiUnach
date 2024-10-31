@@ -87,6 +87,29 @@ const Profile = () => {
         }
     }
 
+    async function getSavedPosts() {
+        try{
+            const response=await fetch(`${API_URL}/getSavedPosts/${user.id}`,{
+                method:'GET',
+                headers:{
+                    'Content-type':'application/json'
+                }
+            });
+
+            const result=await response.json();
+
+            if(response.ok){
+                setPosts(result.body.posts);
+            }
+            else{
+                console.error("Ocurre un error: ",error);
+            }
+        }
+        catch(error){
+            console.error("Error aquí: ",error);
+        }
+    }
+
     useEffect(()=>{
         getPosts();
     },[]);
@@ -135,7 +158,7 @@ const Profile = () => {
                 </Row>
                 <div className="d-flex justify-content-center mt-3">
                     <Stack direction="horizontal" gap={{ 'lg': 5, 'sm': 4, 'xs': 1 }} className="flex-wrap justify-content-center">
-                        <div className="p-1 px-sm-3 py-3 optionsProfile">Publicaciones guardadas</div>
+                        <div className="p-1 px-sm-3 py-3 optionsProfile" onClick={getSavedPosts}>Publicaciones guardadas</div>
                         <div className="p-1 px-sm-3 py-3 optionsProfile" onClick={getPosts}>Tus publicaciones</div>
                         <div className="p-1 px-sm-3 py-3 optionsProfile" onClick={getLikedPosts}>Me gusta</div>
                     </Stack>
