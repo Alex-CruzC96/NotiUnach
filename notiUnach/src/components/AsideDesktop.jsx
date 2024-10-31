@@ -9,13 +9,15 @@ import { faGear } from "@fortawesome/free-solid-svg-icons"
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 import { faMoon } from "@fortawesome/free-solid-svg-icons"
 import { faSun } from "@fortawesome/free-solid-svg-icons"
+import { faRotateRight } from "@fortawesome/free-solid-svg-icons"
 import './AsideDesktop.css'
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../assets/auth/AuthProvider";
+import Button from "react-bootstrap/esm/Button"
 
 
-const AsideDesktop = ({ darkMode, setDarkMode }) => {
+const AsideDesktop = ({ darkMode, setDarkMode, getPosts }) => {
     //Variable que contendrá la foto de perfil
     const { user }=useAuth();
 
@@ -29,6 +31,8 @@ const AsideDesktop = ({ darkMode, setDarkMode }) => {
     const [hoverNoti, setHoverNoti] = useState(false);
     const [hoverConf, setHoverConf] = useState(false);
 
+    const variant=darkMode?'dark':'ligth';
+    
     return (
         <>
             <div className="container-fluid">
@@ -81,7 +85,12 @@ const AsideDesktop = ({ darkMode, setDarkMode }) => {
                         </Link>
                     </div>
 
-                    <div className="row position-absolute start-0 bottom-0 asideFoot py-3">
+                    <div className="row row-cols-1 position-absolute start-0 bottom-0 asideFoot py-3">
+                        <div className="col text-center mb-2">
+                            <Button variant={variant} onClick={getPosts} className="bg-transparent border-0">
+                                <FontAwesomeIcon icon={faRotateRight} size={"lg"}/>
+                            </Button>
+                        </div>
                         <div className="col text-center">
                             <FontAwesomeIcon icon={faSun} size="lg" />
                             <Form.Check // prettier-ignore
