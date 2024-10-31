@@ -5,7 +5,7 @@ import Image from 'react-bootstrap/esm/Image'
 import Button from 'react-bootstrap/Button';
 import ImgProfile from './ImgProfile';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faL } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-regular-svg-icons'
 import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
@@ -21,10 +21,15 @@ function Post({postId,source,name,date,content}){
     //Esta variable debe estar en función de una API
     const [like,setLike]=useState(false);
     const [savePost,setSavePost]=useState(false);
+    
+    //Variable para mostrar comentarios
+    const [showComents,setShowComments]=useState(false);
 
     //Clase que controla el color del corazon y del bookMark de cada POST
     let classHeart=like ? 'liked' : '';
     let bookMarkClass=savePost? 'saved' : '';
+
+    let commentsActive=showComents ? 'active' : '';
 
     const url=source ? `../../backend/${source}` : `${ImgProfile}google/unavatar.io`;
 
@@ -156,10 +161,19 @@ function Post({postId,source,name,date,content}){
                 <Row className='px-1'>
                     <Col>
                         <div className="ck-content" dangerouslySetInnerHTML={{ __html: content }}></div>
+                        <div className={'comments '+commentsActive}>
+                            asd
+                            asd
+                            asd
+                            asd
+                            asd
+                            asd
+                            asd
+                        </div>
                         <Button className='bg-transparent border-0 p-0' onClick={()=>likePost()}>
                             <FontAwesomeIcon icon={faHeart} size='lg' className={'corazon '+classHeart}/>
                         </Button>{''}
-                        <Button className='bg-transparent border-0 p-0 ms-2'>
+                        <Button className='bg-transparent border-0 p-0 ms-2' onClick={()=>setShowComments(!showComents)}>
                             <FontAwesomeIcon icon={faComment} size='lg' className='comentario'/>
                         </Button>
                         <Button className='bg-transparent border-0 p-0 ms-2' onClick={() => save()}>

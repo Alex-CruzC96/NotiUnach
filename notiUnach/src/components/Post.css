@@ -32,6 +32,21 @@
 .saveIcon.saved{
     color: var(--fg-date-color);
 }
+
+.comments{
+    background-color: red;
+    overflow-y: scroll;
+    height: 0;
+    transition: height 0.2s;
+}
+.comments.active{
+    height: 350px;
+    transition: height 0.5s;
+}
+.comments::-webkit-scrollbar{
+    width: 10px;
+}
+
 @media (min-width:835px) {
     .corazon:hover{
         height: 22px;
