@@ -75,6 +75,10 @@ function App() {
     }
   }
 
+  function hola(){
+    alert("Hola mundo!");
+  }
+
   return (
     <>
       <AuthProvider>
@@ -99,7 +103,7 @@ function App() {
               <Route path='/home' element={
                 <div>
                   <div id="header" className={dark}>
-                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>)}
+                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>)}
                   </div>
 
                   <div id='post' className={dark}>
@@ -133,7 +137,7 @@ function App() {
               <Route path='/notificaciones' element={
                 <div>
                   <div id="header" className={dark}>
-                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts} />)}
+                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts} />)}
                   </div>
 
                   <div id='notification' className={dark}>
@@ -149,7 +153,7 @@ function App() {
               <Route path='/configuracion' element={
                 <div>
                   <div id="header" className={dark}>
-                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>)}
+                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>)}
                   </div>
 
                   <div id='settings' className={dark}>
@@ -165,7 +169,7 @@ function App() {
               <Route path='/detalles-usuario' element={
                 <div>
                   <div id="header" className={dark}>
-                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts} />)}
+                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts} />)}
                   </div>
 
                   <div id='detalleUser' className={dark}>
@@ -181,7 +185,7 @@ function App() {
               <Route path='/crear-publicacion'element={
                 <div>
                     <div id="header" className={dark}>
-                      {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} user={'github/Alex-CruzC96'} />) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts} />)}
+                      {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts} />)}
                     </div>
 
                     <div id='makePublication'>

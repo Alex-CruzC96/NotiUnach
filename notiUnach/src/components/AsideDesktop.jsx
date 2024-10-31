@@ -30,6 +30,7 @@ const AsideDesktop = ({ darkMode, setDarkMode, getPosts }) => {
     const [hoverCat, setHoverCat] = useState(false);
     const [hoverNoti, setHoverNoti] = useState(false);
     const [hoverConf, setHoverConf] = useState(false);
+    const [hoverRot,setHoverRot]=useState(false);
 
     const variant=darkMode?'dark':'ligth';
     
@@ -87,8 +88,8 @@ const AsideDesktop = ({ darkMode, setDarkMode, getPosts }) => {
 
                     <div className="row row-cols-1 position-absolute start-0 bottom-0 asideFoot py-3">
                         <div className="col text-center mb-2">
-                            <Button variant={variant} onClick={getPosts} className="bg-transparent border-0">
-                                <FontAwesomeIcon icon={faRotateRight} size={"lg"}/>
+                            <Button variant={variant} onClick={getPosts} onMouseEnter={() => setHoverRot(true)} onMouseLeave={() => setHoverRot(false)} className="bg-transparent border-0">
+                                {hoverRot ? <FontAwesomeIcon icon={faRotateRight} size={"lg"} spin/> : <FontAwesomeIcon icon={faRotateRight} size={"lg"}/>}
                             </Button>
                         </div>
                         <div className="col text-center">

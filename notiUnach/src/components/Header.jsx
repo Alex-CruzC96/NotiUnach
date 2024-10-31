@@ -9,15 +9,17 @@ import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faSun , faMoon } from '@fortawesome/free-solid-svg-icons'
+import { faRotateRight } from "@fortawesome/free-solid-svg-icons"
 import { useAuth } from "../assets/auth/AuthProvider";
 
-function Header({darkMode, setDarkMode}){
+function Header({darkMode, setDarkMode, getPosts}){
     const { user }=useAuth();
 
     const userProfilePicture = user?.profilePicture && !user.profilePicture.error 
     ? `../../backend/${user.profilePicture}` 
     : `${ImgProfile}google/unavatar.io`;
 
+    const variant=darkMode?'dark':'light';
     return(
         <>
             <Container fluid className='pt-4'>
@@ -28,6 +30,9 @@ function Header({darkMode, setDarkMode}){
                         </Link>
                     </Col>
                     <Col className='d-flex align-items-center justify-content-end pe-4'>
+                        <Button variant={variant} onClick={getPosts} className='bg-transparent border-0 me-2'>
+                            <FontAwesomeIcon icon={faRotateRight} size='2xl'/>
+                        </Button>
                         <Button className='bg-transparent border-0 p-0' onClick={setDarkMode}>
                             {!darkMode ? <FontAwesomeIcon icon={faSun} size='2xl' color='#000000'/> : <FontAwesomeIcon icon={faMoon} size='2xl' color='#FFFFFFF'/>}
                         </Button>
