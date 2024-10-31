@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/esm/Image'
 import Button from 'react-bootstrap/Button';
 import ImgProfile from './ImgProfile';
+import Comment from './Comment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faL } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-regular-svg-icons'
@@ -162,13 +163,12 @@ function Post({postId,source,name,date,content}){
                     <Col>
                         <div className="ck-content" dangerouslySetInnerHTML={{ __html: content }}></div>
                         <div className={'comments '+commentsActive}>
-                            asd
-                            asd
-                            asd
-                            asd
-                            asd
-                            asd
-                            asd
+                            <Comment/>
+                            <Comment/>
+                            <Comment/>
+                            <Comment/>
+                            <Comment/>
+                            <Comment/>
                         </div>
                         <Button className='bg-transparent border-0 p-0' onClick={()=>likePost()}>
                             <FontAwesomeIcon icon={faHeart} size='lg' className={'corazon '+classHeart}/>

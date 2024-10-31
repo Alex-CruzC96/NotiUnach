@@ -34,10 +34,13 @@
 }
 
 .comments{
-    background-color: red;
+    /* background-color: lightblue; */
     overflow-y: scroll;
     height: 0;
     transition: height 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 .comments.active{
     height: 350px;
