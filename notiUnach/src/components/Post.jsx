@@ -178,12 +178,16 @@ function Post({postId,source,name,date,content,darkMode}){
                                 <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
                             </div>
                             <div className={'editorSection '+darkMode}>
-                                <CK placeholder={'Escribe un comentario'} data={data} setData={setData}/>
-                            </div>
-                            <div className='sendSection'>
-                                <Button>
-                                    <FontAwesomeIcon icon={faPaperPlane}/>
-                                </Button>
+                                <Row className='row-cols-2'>
+                                    <Col xs={10} className='max-height'>
+                                        <CK placeholder={'Escribe un comentario'} data={data} setData={setData}/>
+                                    </Col>
+                                    <Col xs={2} className='d-flex justify-content-center align-items-end'>
+                                        <Button>
+                                            <FontAwesomeIcon icon={faPaperPlane}/>
+                                        </Button>
+                                    </Col>
+                                </Row>
                             </div>
                         </div>
                         <Button className='bg-transparent border-0 p-0' onClick={()=>likePost()}>

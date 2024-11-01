@@ -36,6 +36,7 @@
 .comments{
     /* background-color: lightblue; */
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 0;
     transition: height 0.2s;
     position: relative;
@@ -53,22 +54,17 @@
     gap: 10px;
 }
 .editorSection{
-    width: 90%;
-    display: inline-block;
-    padding: 0;
     position: sticky;
+    bottom: 0;
     background-color: var(--bg-post-color);
-    bottom: 0px;
-    margin-right: 10px;
+    max-height: 200px;
 }
 .editorSection.dark{
     background-color: var(--bg-dark-post-color);
 }
-.sendSection{
-    width: 8%;
-    display: inline-block;
-    position: sticky;
-    bottom: 15px;
+.max-height{
+    max-height: 200px !important;
+    overflow-y: scroll;
 }
 
 
