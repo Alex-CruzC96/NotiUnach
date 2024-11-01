@@ -141,6 +141,10 @@ function Post({postId,source,name,date,content,darkMode}){
         }
     }
 
+    const shareComment=async()=>{
+        alert(data);
+    }
+
     const formatDate = (isoString) => {
         const date = new Date(isoString);
         const year = date.getFullYear();
@@ -183,7 +187,7 @@ function Post({postId,source,name,date,content,darkMode}){
                                         <CK placeholder={'Escribe un comentario'} data={data} setData={setData}/>
                                     </Col>
                                     <Col xs={2} className='d-flex justify-content-center align-items-end'>
-                                        <Button>
+                                        <Button onClick={shareComment}>
                                             <FontAwesomeIcon icon={faPaperPlane}/>
                                         </Button>
                                     </Col>

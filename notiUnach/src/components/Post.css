@@ -66,6 +66,9 @@
     max-height: 200px !important;
     overflow-y: scroll;
 }
+.max-height::-webkit-scrollbar{
+    width: 2px;
+}
 
 
 @media (min-width:835px) {
