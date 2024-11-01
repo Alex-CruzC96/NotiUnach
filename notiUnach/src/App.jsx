@@ -108,7 +108,7 @@ function App() {
 
                   <div id='post' className={dark}>
                     {posts.map((post,index)=>(
-                      <Post key={index} postId={post.id} name={`${post.name} ${post.lastName}`} date={post.date} content={post.body} source={post.profile_picture}/>
+                      <Post key={index} postId={post.id} name={`${post.name} ${post.lastName}`} date={post.date} content={post.body} source={post.profile_picture} darkMode={dark}/>
                     ))}
                   </div>
 

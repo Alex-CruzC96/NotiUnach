@@ -37,9 +37,6 @@
     /* background-color: lightblue; */
     overflow-y: scroll;
     height: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
     transition: height 0.2s;
     position: relative;
 }
@@ -50,16 +47,28 @@
 .comments::-webkit-scrollbar{
     width: 10px;
 }
-
-.commentEditor{
-    width: 100%;
-    background-color: var(--bg-post-color); 
-    position: sticky; 
-    bottom: 0px; 
-    z-index: 1;   
+.commentsSection{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
-.sendComment{
-    
+.editorSection{
+    width: 90%;
+    display: inline-block;
+    padding: 0;
+    position: sticky;
+    background-color: var(--bg-post-color);
+    bottom: 0px;
+    margin-right: 10px;
+}
+.editorSection.dark{
+    background-color: var(--bg-dark-post-color);
+}
+.sendSection{
+    width: 8%;
+    display: inline-block;
+    position: sticky;
+    bottom: 15px;
 }
 
 

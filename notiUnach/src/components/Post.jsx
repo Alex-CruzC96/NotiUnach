@@ -7,7 +7,7 @@ import ImgProfile from './ImgProfile';
 import Comment from './Comment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faL } from '@fortawesome/free-solid-svg-icons'
-import { faComment } from '@fortawesome/free-regular-svg-icons'
+import { faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import './Post.css'
@@ -16,7 +16,7 @@ import { useAuth } from '../assets/auth/AuthProvider'
 import { API_URL } from '../assets/auth/constants'
 import CK from './CkEditor/CK';
 
-function Post({postId,source,name,date,content}){
+function Post({postId,source,name,date,content,darkMode}){
     //Contenido del usuario que tiene una sesión iniciada 
     const { user }=useAuth();
 
@@ -167,17 +167,23 @@ function Post({postId,source,name,date,content}){
                     <Col>
                         <div className="ck-content" dangerouslySetInnerHTML={{ __html: content }}></div>
                         <div className={'comments '+commentsActive}>
-                            <Button className='sendComment'>asdasd</Button>
-                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                            <div className='commentEditor'>
-                                <CK placeholder={'Haz un comentario'} data={data} setData={setData}/>
+                            <div className='commentsSection'>
+                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                            </div>
+                            <div className={'editorSection '+darkMode}>
+                                <CK placeholder={'Escribe un comentario'} data={data} setData={setData}/>
+                            </div>
+                            <div className='sendSection'>
+                                <Button>
+                                    <FontAwesomeIcon icon={faPaperPlane}/>
+                                </Button>
                             </div>
                         </div>
                         <Button className='bg-transparent border-0 p-0' onClick={()=>likePost()}>
