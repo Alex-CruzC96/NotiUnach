@@ -5,7 +5,7 @@ import Image from "react-bootstrap/esm/Image";
 import ImgProfile from "./ImgProfile";
 import './Comment.css';
 
-const Comment = ()=>{
+const Comment = ({ name, lastName , date, profilePicture, content })=>{
     return (
         <>
             <Container fluid className="comment">
@@ -13,11 +13,23 @@ const Comment = ()=>{
                     <Col>
                         <Image fluid roundedCircle src={ImgProfile+'google/unavatar.io'} className="img-user"/>
                         <div className="d-inline-block ps-2">
-                            <p className="fs-6 m-0">Nombre</p>
+                            <div>
+                                <p className="fs-6 m-0 me-2 d-inline">{name+' '+lastName}</p>
+                                <nav className="d-inline date">{date}</nav>
+                            </div>
                         </div>
                     </Col>
                 </Row>
-                <p className="eti">Hola mundo!!</p>
+                <Row>
+                    <Col>
+                        <p className="eti m-0">Hola mundo!!</p>
+                        <p className="eti m-0">Hola mundo!!</p>
+                        <p className="eti m-0">Hola mundo!!</p>
+                        <p className="eti m-0">Hola mundo!!</p>
+                        <p className="eti m-0">Hola mundo!!</p>
+                        <p className="eti m-0">Hola mundo!!</p>
+                    </Col>
+                </Row>
             </Container>
         </>
     );

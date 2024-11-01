@@ -30,6 +30,9 @@
 #post.dark .post,#header.dark .addPost{
   background-color: var(--bg-dark-post-color);
 }
+#post.dark .comment{
+  background-color: var(--bg-dark-post-color);
+}
 
 #profile.dark .tag{
   color: white;

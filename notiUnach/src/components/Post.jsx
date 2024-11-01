@@ -14,6 +14,7 @@ import './Post.css'
 import './CkEditor/ImgStyles.css'
 import { useAuth } from '../assets/auth/AuthProvider'
 import { API_URL } from '../assets/auth/constants'
+import CK from './CkEditor/CK';
 
 function Post({postId,source,name,date,content}){
     //Contenido del usuario que tiene una sesión iniciada 
@@ -25,6 +26,9 @@ function Post({postId,source,name,date,content}){
     
     //Variable para mostrar comentarios
     const [showComents,setShowComments]=useState(false);
+
+    //Variable con el contenido del comentario por hacer
+    const [data,setData]=useState('');
 
     //Clase que controla el color del corazon y del bookMark de cada POST
     let classHeart=like ? 'liked' : '';
@@ -163,12 +167,18 @@ function Post({postId,source,name,date,content}){
                     <Col>
                         <div className="ck-content" dangerouslySetInnerHTML={{ __html: content }}></div>
                         <div className={'comments '+commentsActive}>
-                            <Comment/>
-                            <Comment/>
-                            <Comment/>
-                            <Comment/>
-                            <Comment/>
-                            <Comment/>
+                            <Button className='sendComment'>asdasd</Button>
+                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                            <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                            <div className='commentEditor'>
+                                <CK placeholder={'Haz un comentario'} data={data} setData={setData}/>
+                            </div>
                         </div>
                         <Button className='bg-transparent border-0 p-0' onClick={()=>likePost()}>
                             <FontAwesomeIcon icon={faHeart} size='lg' className={'corazon '+classHeart}/>

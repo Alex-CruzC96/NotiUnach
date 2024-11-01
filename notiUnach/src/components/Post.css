@@ -37,10 +37,11 @@
     /* background-color: lightblue; */
     overflow-y: scroll;
     height: 0;
-    transition: height 0.2s;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    transition: height 0.2s;
+    position: relative;
 }
 .comments.active{
     height: 350px;
@@ -49,6 +50,18 @@
 .comments::-webkit-scrollbar{
     width: 10px;
 }
+
+.commentEditor{
+    width: 100%;
+    background-color: var(--bg-post-color); 
+    position: sticky; 
+    bottom: 0px; 
+    z-index: 1;   
+}
+.sendComment{
+    
+}
+
 
 @media (min-width:835px) {
     .corazon:hover{

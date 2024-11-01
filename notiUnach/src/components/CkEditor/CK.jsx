@@ -66,7 +66,7 @@ import 'ckeditor5/ckeditor5.css';
 
 import './CK.css';
 
-export default function App({data,setData}) {
+export default function App({data,setData,placeholder}) {
 	const editorContainerRef = useRef(null);
 	const editorRef = useRef(null);
 	const [isLayoutReady, setIsLayoutReady] = useState(false);
@@ -249,7 +249,7 @@ export default function App({data,setData}) {
 				reversed: true
 			}
 		},
-		placeholder: '¡¡Crea tu primera publicación!!',
+		placeholder: placeholder || '¡¡Crea tu primera publicación!!',
 		table: {
 			contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
 		},
