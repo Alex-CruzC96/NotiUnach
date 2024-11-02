@@ -9,6 +9,7 @@ import Settings from './components/Settings'
 import MakePublication from './components/MakePublication'
 import Login from './components/authComponents/login'
 import SignUp from './components/authComponents/signup'
+import Categories from './components/Categories'
 import Validation from './components/authComponents/validation'
 import './App.css'
 import { useState, useEffect } from 'react'
@@ -117,6 +118,23 @@ function App() {
                   </div>
                 </div>
               } />
+
+              <Route path='/categorias' element={
+                <div>
+                  <div id="header" className={dark}>
+                    {isDesktop ? (<Header darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>) : (<AsideDesktop darkMode={darkMode} setDarkMode={darkBody} getPosts={fetchPosts}/>)}
+                  </div>
+                  
+                  <div id='categories'>
+                    <Categories/>
+                  </div>
+
+                  <div id='footer'>
+                    {isDesktop ? (<Footer />) : ''}
+                  </div>
+                </div>
+              }/>
+
 
               <Route path='/perfil' element={
                 <div>
