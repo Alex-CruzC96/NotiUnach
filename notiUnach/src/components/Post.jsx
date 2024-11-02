@@ -29,6 +29,9 @@ function Post({postId,source,name,date,content,darkMode}){
     //Variable para mostrar comentarios
     const [showComents,setShowComments]=useState(false);
 
+    //Variable que contendrá todos los comentarios del post
+    const [comments,setComments]=useState([]);
+
     //Variable con el contenido del comentario por hacer
     const [data,setData]=useState('');
 
@@ -185,6 +188,11 @@ function Post({postId,source,name,date,content,darkMode}){
 
     }
 
+    const getComments=async () =>{
+        setShowComments(!showComents);
+        
+    }
+
     const formatDate = (isoString) => {
         const date = new Date(isoString);
         const year = date.getFullYear();
@@ -241,7 +249,7 @@ function Post({postId,source,name,date,content,darkMode}){
                         <Button className='bg-transparent border-0 p-0' onClick={()=>likePost()}>
                             <FontAwesomeIcon icon={faHeart} size='lg' className={'corazon '+classHeart}/>
                         </Button>{''}
-                        <Button className='bg-transparent border-0 p-0 ms-2' onClick={()=>setShowComments(!showComents)}>
+                        <Button className='bg-transparent border-0 p-0 ms-2' onClick={getComments}>
                             <FontAwesomeIcon icon={faComment} size='lg' className='comentario'/>
                         </Button>
                         <Button className='bg-transparent border-0 p-0 ms-2' onClick={() => save()}>
