@@ -35,6 +35,9 @@ function Post({postId,source,name,date,content,darkMode}){
     //Variable que contendrá mensajes de error
     const [error,setError]=useState('');
 
+    //Variable que contendrá un mensaje de éxito
+    const [success,setSuccess]=useState('');
+
     //Clase que controla el color del corazon y del bookMark de cada POST
     let classHeart=like ? 'liked' : '';
     let bookMarkClass=savePost? 'saved' : '';
@@ -164,8 +167,11 @@ function Post({postId,source,name,date,content,darkMode}){
             const result=await response.json();
 
             if(response.ok){
-                alert("Comentario publicado con éxito");
+                setSuccess(result.body.message);
                 setData('');
+                setTimeout(()=>{
+                    setSuccess('');
+                },2000);
             }else{
                 setError(result.body.message);
                 setTimeout(()=>{
@@ -220,6 +226,7 @@ function Post({postId,source,name,date,content,darkMode}){
                                     <Col xs={10} className='max-height'>
                                         <CK placeholder={'Escribe un comentario'} data={data} setData={setData}/>
                                         {error ? <Alert variant='danger'>{error}</Alert> : ''}
+                                        {success ? <Alert variant='success'>{success}</Alert> : ''}
                                     </Col>
                                     <Col xs={2} className='d-flex justify-content-center align-items-end'>
                                         <Form onSubmit={shareComment}>
