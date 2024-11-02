@@ -5,6 +5,7 @@ import Image from 'react-bootstrap/esm/Image'
 import Button from 'react-bootstrap/Button';
 import ImgProfile from './ImgProfile';
 import Comment from './Comment';
+import Form from 'react-bootstrap/Form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faL } from '@fortawesome/free-solid-svg-icons'
 import { faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons'
@@ -141,7 +142,8 @@ function Post({postId,source,name,date,content,darkMode}){
         }
     }
 
-    const shareComment=async()=>{
+    const shareComment=async(e)=>{
+        e.preventDefault();
         alert(data);
     }
 
@@ -187,9 +189,11 @@ function Post({postId,source,name,date,content,darkMode}){
                                         <CK placeholder={'Escribe un comentario'} data={data} setData={setData}/>
                                     </Col>
                                     <Col xs={2} className='d-flex justify-content-center align-items-end'>
-                                        <Button onClick={shareComment}>
-                                            <FontAwesomeIcon icon={faPaperPlane}/>
-                                        </Button>
+                                        <Form onSubmit={shareComment}>
+                                            <Button type='submit'>
+                                                <FontAwesomeIcon icon={faPaperPlane}/>
+                                            </Button>
+                                        </Form>
                                     </Col>
                                 </Row>
                             </div>
