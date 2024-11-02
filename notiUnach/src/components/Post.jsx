@@ -190,7 +190,31 @@ function Post({postId,source,name,date,content,darkMode}){
 
     const getComments=async () =>{
         setShowComments(!showComents);
-        
+        if(showComents){
+            setComments([]);
+        }
+        else{
+            try{
+                const response=await fetch(`${API_URL}/getComments/${postId}`,{
+                    method:'GET',
+                    headers:{
+                        'Content-type':'application/json'
+                    }
+                });
+
+                const result=await response.json();
+
+                if(response.ok){
+                    setComments(result.body.comments);
+                }
+                else{
+                    console.error("Algo raro está ocurriendo");
+                }
+            }
+            catch(error){
+                console.error('Esta ocurriendo un error inesperado: ',error);
+            }
+        }
     }
 
     const formatDate = (isoString) => {
