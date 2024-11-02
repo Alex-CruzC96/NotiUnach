@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import ImgProfile from './ImgProfile';
 import Comment from './Comment';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faL } from '@fortawesome/free-solid-svg-icons'
 import { faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons'
@@ -30,6 +31,9 @@ function Post({postId,source,name,date,content,darkMode}){
 
     //Variable con el contenido del comentario por hacer
     const [data,setData]=useState('');
+
+    //Variable que contendrá mensajes de error
+    const [error,setError]=useState('');
 
     //Clase que controla el color del corazon y del bookMark de cada POST
     let classHeart=like ? 'liked' : '';
@@ -157,11 +161,16 @@ function Post({postId,source,name,date,content,darkMode}){
                 })
             });
 
+            const result=await response.json();
+
             if(response.ok){
                 alert("Comentario publicado con éxito");
                 setData('');
             }else{
-                console.error('Ocurrió un error inesperado:');
+                setError(result.body.message);
+                setTimeout(()=>{
+                    setError('');
+                },2000);
             }
         }
         catch(error){
@@ -210,6 +219,7 @@ function Post({postId,source,name,date,content,darkMode}){
                                 <Row className='row-cols-2'>
                                     <Col xs={10} className='max-height'>
                                         <CK placeholder={'Escribe un comentario'} data={data} setData={setData}/>
+                                        {error ? <Alert variant='danger'>{error}</Alert> : ''}
                                     </Col>
                                     <Col xs={2} className='d-flex justify-content-center align-items-end'>
                                         <Form onSubmit={shareComment}>
