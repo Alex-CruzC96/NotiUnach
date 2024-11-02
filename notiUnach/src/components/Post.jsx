@@ -213,9 +213,6 @@ function Post({postId,source,name,date,content,darkMode}){
             if(response.ok){
                 setComments(result.body.comments);
             }
-            else{
-                console.error("Algo raro está ocurriendo");
-            }
         }
         catch(error){
             console.error('Esta ocurriendo un error inesperado: ',error);
