@@ -172,6 +172,7 @@ function Post({postId,source,name,date,content,darkMode}){
             if(response.ok){
                 setSuccess(result.body.message);
                 setData('');
+                getComments();
                 setTimeout(()=>{
                     setSuccess('');
                 },2000);
@@ -188,33 +189,38 @@ function Post({postId,source,name,date,content,darkMode}){
 
     }
 
-    const getComments=async () =>{
+    const showComments=()=>{
         setShowComments(!showComents);
         if(showComents){
-            setComments([]);
+            setTimeout(()=>{
+                setComments([]);
+            },200);
         }
         else{
-            try{
-                const response=await fetch(`${API_URL}/getComments/${postId}`,{
-                    method:'GET',
-                    headers:{
-                        'Content-type':'application/json'
-                    }
-                });
+            getComments();
+        }
+    }
 
-                const result=await response.json();
-
-                if(response.ok){
-                    setComments(result.body.comments);
+    const getComments=async () =>{
+        try{
+            const response=await fetch(`${API_URL}/getComments/${postId}`,{
+                method:'GET',
+                headers:{
+                    'Content-type':'application/json'
                 }
-                else{
-                    console.error("Algo raro está ocurriendo");
-                }
+            });
+            const result=await response.json();
+            if(response.ok){
+                setComments(result.body.comments);
             }
-            catch(error){
-                console.error('Esta ocurriendo un error inesperado: ',error);
+            else{
+                console.error("Algo raro está ocurriendo");
             }
         }
+        catch(error){
+            console.error('Esta ocurriendo un error inesperado: ',error);
+        }
+        
     }
 
     const formatDate = (isoString) => {
@@ -244,14 +250,16 @@ function Post({postId,source,name,date,content,darkMode}){
                         <div className="ck-content" dangerouslySetInnerHTML={{ __html: content }}></div>
                         <div className={'comments '+commentsActive}>
                             <div className='commentsSection'>
-                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
-                                <Comment name={'Alex'} lastName={'Cruz'} date={'31-10-2024'}/>
+                                {comments.map((comment,index)=>(
+                                    <Comment 
+                                    key={index}
+                                    name={comment.name} 
+                                    lastName={comment.lastName} 
+                                    date={comment.date} 
+                                    content={comment.content} 
+                                    profilePicture={comment.profile_picture}
+                                    />
+                                ))}
                             </div>
                             <div className={'editorSection '+darkMode}>
                                 <Row className='row-cols-2'>
@@ -273,7 +281,7 @@ function Post({postId,source,name,date,content,darkMode}){
                         <Button className='bg-transparent border-0 p-0' onClick={()=>likePost()}>
                             <FontAwesomeIcon icon={faHeart} size='lg' className={'corazon '+classHeart}/>
                         </Button>{''}
-                        <Button className='bg-transparent border-0 p-0 ms-2' onClick={getComments}>
+                        <Button className='bg-transparent border-0 p-0 ms-2' onClick={showComments}>
                             <FontAwesomeIcon icon={faComment} size='lg' className='comentario'/>
                         </Button>
                         <Button className='bg-transparent border-0 p-0 ms-2' onClick={() => save()}>

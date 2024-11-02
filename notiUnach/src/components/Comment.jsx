@@ -6,28 +6,33 @@ import ImgProfile from "./ImgProfile";
 import './Comment.css';
 
 const Comment = ({ name, lastName , date, profilePicture, content })=>{
+
+    const profile_picture= `../../backend/${profilePicture}` || ImgProfile+'google/unavatar.io';
+
+    const formatDate = (isoString) => {
+        const date = new Date(isoString);
+        const year = date.getFullYear();
+        const month = ('0' + (date.getMonth() + 1)).slice(-2);
+        const day = ('0' + date.getDate()).slice(-2);
+        return `${year}-${month}-${day}`;
+    }
     return (
         <>
             <Container fluid className="comment">
                 <Row>
                     <Col>
-                        <Image fluid roundedCircle src={ImgProfile+'google/unavatar.io'} className="img-user"/>
+                        <Image fluid roundedCircle src={profile_picture} className="img-user"/>
                         <div className="d-inline-block ps-2">
                             <div>
                                 <p className="fs-6 m-0 me-2 d-inline">{name+' '+lastName}</p>
-                                <nav className="d-inline date">{date}</nav>
+                                <nav className="d-inline date">{formatDate(date)}</nav>
                             </div>
                         </div>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <p className="eti m-0">Hola mundo!!</p>
-                        <p className="eti m-0">Hola mundo!!</p>
-                        <p className="eti m-0">Hola mundo!!</p>
-                        <p className="eti m-0">Hola mundo!!</p>
-                        <p className="eti m-0">Hola mundo!!</p>
-                        <p className="eti m-0">Hola mundo!!</p>
+                        <div className="ck-content" dangerouslySetInnerHTML={{ __html: content }}></div>
                     </Col>
                 </Row>
             </Container>
