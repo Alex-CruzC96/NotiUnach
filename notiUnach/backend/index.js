@@ -26,6 +26,7 @@ app.use('/api/getLikedPosts',require('./routes/yourLikedPosts'));
 app.use('/api/isSaved',require('./routes/isSaved'));
 app.use('/api/savePost',require('./routes/savePost'));
 app.use('/api/getSavedPosts',require('./routes/yourSavedPosts'));
+app.use('/api/commentPost',require('./routes/addComment'));
 
 app.get('/',(req,res)=>{
     res.send({status:200});

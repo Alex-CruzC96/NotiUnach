@@ -144,7 +144,30 @@ function Post({postId,source,name,date,content,darkMode}){
 
     const shareComment=async(e)=>{
         e.preventDefault();
-        alert(data);
+        try{
+            const response=await fetch(`${API_URL}/commentPost`,{
+                method:'POST',
+                headers:{
+                    'Content-type':'application/json'
+                },
+                body:JSON.stringify({
+                    postId:postId,
+                    userId:user.id,
+                    content:data
+                })
+            });
+
+            if(response.ok){
+                alert("Comentario publicado con éxito");
+                setData('');
+            }else{
+                console.error('Ocurrió un error inesperado:');
+            }
+        }
+        catch(error){
+            console.error("Ocurrió un error de excepción: ",error);
+        }
+
     }
 
     const formatDate = (isoString) => {
