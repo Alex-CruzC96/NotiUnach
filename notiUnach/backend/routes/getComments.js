@@ -34,7 +34,7 @@ router.get('/:postId',async(req,res)=>{
             AND user_profile_picture.is_using = TRUE
             LEFT JOIN multimedia ON user_profile_picture.multimedia_id = multimedia.id
             WHERE comments.post_id = ?
-            ORDER BY comments.date DESC, comments.id    
+            ORDER BY comments.date DESC, comments.id DESC  
         `,[postId]);
 
         if(rows.length===0){

@@ -36,7 +36,7 @@ router.get('/:userId',async (req,res)=>{
             AND user_profile_picture.is_using = TRUE
             LEFT JOIN multimedia ON user_profile_picture.multimedia_id = multimedia.id
             WHERE notifications.user_receives = ?
-            ORDER BY notifications.date DESC, notifications.id
+            ORDER BY notifications.date DESC, notifications.id DESC
         `,[userId]);
 
         if(rows.length===0){
