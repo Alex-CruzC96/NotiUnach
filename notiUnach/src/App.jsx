@@ -143,7 +143,7 @@ function App() {
                   </div>
 
                   <div id='profile' className={dark}>
-                    <Profile/>
+                    <Profile darkMode={darkMode}/>
                   </div>
 
                   <div id='footer'>

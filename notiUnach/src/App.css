@@ -46,6 +46,12 @@
 #profile.dark .post{
   background-color: var(--bg-dark-post-color) !important;
 }
+#profile.dark .comment{
+  background-color: var(--bg-dark-post-color);
+}
+#profile.dark .editorSection{
+  background-color: var(--bg-dark-post-color);
+}
 #notification{
   padding-bottom: 80px !important;
 }
