@@ -1,6 +1,5 @@
 const { jsonResponse }=require('../lib/jsonResponse');
 const router=require('express').Router()
-require('dotenv').config();
 
 const db = require('../lib/db');
 
