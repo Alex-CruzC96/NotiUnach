@@ -26,10 +26,10 @@ router.get('/',async (req,res)=>{
                 message:"Aún no se ha realizado ninguna publicación"
             });
         }
-
-        return res.status(200).json(jsonResponse(200,{
+        
+        return res.status(200).json({
             posts:rows
-        }));
+        })
         
     }
     catch(error){
