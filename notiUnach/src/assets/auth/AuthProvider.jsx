@@ -117,10 +117,22 @@ export function AuthProvider({ children }) {
     }
 
     async function handleLogin(mail, password) {
+
+        //Contacto a la API con tiempo de espera
+        const fetchWithTime = async (url, options, timeout = 5000) => {
+            const timeoutPromise = new Promise((_, reject) => {
+                setTimeout(() => reject(new Error('Tiempo de espera agotado')), timeout)
+            })
+            return Promise.race([
+                fetch(url, options),
+                timeoutPromise
+            ])
+        }
+        
         try {
             //Se dirige a la API para intentar iniciar sesión
             //Utiliza el correo y contraseña que se le pasa
-            const response = await fetch(`${API_URL}/login`, {
+            const response = await fetchWithTime(`${API_URL}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -129,7 +141,7 @@ export function AuthProvider({ children }) {
                     mail,
                     password
                 })
-            });
+            },1000);
 
             //Si la api responde con un estado 200
             if (response.ok) {

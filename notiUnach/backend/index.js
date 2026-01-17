@@ -4,7 +4,7 @@ const app=express();
 const db=require('./lib/db');
 const path=require('path');
 
-const port=process.env.PORT || 5000;
+const port=process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());

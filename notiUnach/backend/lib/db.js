@@ -1,21 +1,21 @@
-const sql=require('mysql');
-require('dotenv').config();
+const { Pool } = require('pg');
 
-const db=sql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT
+const db = new Pool({
+  host: "localhost",
+  user: "postgres",
+  password: "1234",
+  database: "notiunach",
+  port:5432,
 });
 
-db.connect((err)=>{
-    if (err) {
-        console.error('Error en la conexión con la base de datos:', err);
-        process.exit(1); // Salir del proceso si hay un error en la conexión
-      } else {
-        console.log('Conexión exitosa a la DB, felicidades!!!');
-      }
-});
+db.connect()
+  .then(client => {
+    console.log("Conexión exitosa a la base de datos");
+    client.release();
+  })
+  .catch(err => {
+    console.error("Error en la conexión a PostgreSQL", err);
+    process.exit(1);
+  });
 
-module.exports=db;
+module.exports = db;

@@ -36,10 +36,12 @@ export default function Login() {
                     setErrorResponse(result.error.body.error);
                 } else {
                     setErrorResponse('Error desconocido');
+                    console.log(result.error);
                 }
             }
         } catch (error) {
             console.log(error);
+            alert("Error al contactar a la API");
         }
     }
 
