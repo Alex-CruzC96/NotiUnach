@@ -31,10 +31,11 @@ router.get('/',async (req,res)=>{
         
     }
     catch(error){
-        console.error('Ha ocurrido un error en la consulta');
-        return res.status(500).json(jsonResponse(500,{
-            error:"Ocurrió un problema con la consulta"
-        }));
+        //console.error('Ha ocurrido un error en la consulta');
+        return res.status(500).json({
+            message:"Ocurrió un problema con la consulta",
+            error
+        });
     }
 });
 
