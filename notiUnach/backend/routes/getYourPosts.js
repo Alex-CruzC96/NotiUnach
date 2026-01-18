@@ -4,14 +4,14 @@ require('dotenv').config();
 
 const db = require('../lib/db');
 
-router.get('/:userId', async (req,res)=>{
+router.get('/:userId?', async (req,res)=>{
     
-    const { userId }=req.params;
+    const { userId } = req.params; //Checar el Middleware auth
 
     if(!userId){
-        return res.status(400).json(jsonResponse(400,{
+        return res.status(400).json({
             error:"Hace falta un ID para realizar la consulta"
-        }));
+        });
     }
 
     try{
