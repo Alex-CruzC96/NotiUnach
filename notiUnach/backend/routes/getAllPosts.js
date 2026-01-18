@@ -1,4 +1,3 @@
-const { jsonResponse }=require('../lib/jsonResponse');
 const router=require('express').Router()
 
 const db = require('../lib/db');
